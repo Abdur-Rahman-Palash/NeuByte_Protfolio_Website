@@ -11,7 +11,7 @@ import Video from "@/components/Video";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NeuByte",
+  title: "NeuByte | Future with AI",
   description: "This is Home for Startup Nextjs Template",
   // other metadata
 };

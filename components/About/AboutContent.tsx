@@ -19,13 +19,23 @@ const AboutContent = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="relative">
-              <div className="relative aspect-[1/1] overflow-hidden rounded-lg">
-                <Image
-                  src="/images/about/neubytes.png"
-                  alt="NeuByte Company"
-                  fill
-                  className="object-cover drop-shadow-three"
-                />
+              <div className="flex flex-col gap-4">
+                <div className="relative aspect-[1/1] overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/about/neubytes.png"
+                    alt="NeuByte Company"
+                    fill
+                    className="object-cover drop-shadow-three"
+                  />
+                </div>
+                <div className="relative aspect-[1/1] overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/about/banner.png"
+                    alt="NeuByte Company"
+                    fill
+                    className="object-cover drop-shadow-three"
+                  />
+                </div>
               </div>
              
             </div>

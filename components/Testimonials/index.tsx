@@ -11,6 +11,7 @@ const testimonialData: Testimonial[] = [
       "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
     image: "/images/testimonials/auth-01.png",
     star: 5,
+    backContent: "The website's performance is outstanding. Load times are incredibly fast, and the mobile experience is seamless.",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const testimonialData: Testimonial[] = [
       "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
     image: "/images/testimonials/auth-02.png",
     star: 5,
+    backContent: "Excellent customer support! The team responded within minutes and solved our issue perfectly.",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const testimonialData: Testimonial[] = [
       "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
     image: "/images/testimonials/auth-03.png",
     star: 5,
+    backContent: "The design is modern and professional. It perfectly represents our brand and engages our audience effectively.",
   },
 ];
 

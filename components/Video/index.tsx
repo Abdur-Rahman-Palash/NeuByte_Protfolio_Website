@@ -12,7 +12,6 @@ const Video = () => {
       <div className="container">
         <SectionTitle
           title="We are ready to help"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
           center
           mb="80px"
         />
@@ -78,6 +77,14 @@ const Video = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
+            </div>
+            <div className="mt-4 text-center">
+              <button
+                onClick={() => setOpen(false)}
+                className="rounded-lg bg-primary px-6 py-2 text-white hover:bg-primary/80"
+              >
+                Back to Home
+              </button>
             </div>
           </div>
         </div>

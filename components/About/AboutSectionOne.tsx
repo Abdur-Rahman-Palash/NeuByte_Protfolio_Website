@@ -24,8 +24,8 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                title="Shaping the Future with AI Agentic Models"
+                paragraph="We deliver enterprise-grade solutions in AI agentic models, intelligent software engineering, modern website design, and advanced data analytics—helping organizations make smarter decisions in a data-centric world. Trusted by industry leaders worldwide."
                 mb="44px"
               />
 
@@ -33,17 +33,20 @@ const AboutSectionOne = () => {
                 className="wow fadeInUp mb-12 max-w-[570px] lg:mb-0"
                 data-wow-delay=".15s"
               >
+                <h3 className="mb-6 text-xl font-semibold text-black dark:text-white">
+                  ⭐ Premium-Grade Technology Stack
+                </h3>
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Premium quality" />
-                    <List text="Tailwind CSS" />
-                    <List text="Use for lifetime" />
+                    <List text="Premium Quality Architecture Built with enterprise standards for reliability, security, and performance." />
+            
+                    <List text="Next.js Framework Optimized for speed, SEO, and scalable production deployments." />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Next.js" />
-                    <List text="Rich documentation" />
-                    <List text="Developer friendly" />
+                    <List text="Developer-Friendly Experience Clean codebase, modular structure, and best practices for rapid development." />
+                    
+                    <List text="Lifetime Usage One-time investment with long-term value and flexibility." />
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ const starIcon = (
 );
 
 const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
-  const { star, name, image, content, designation } = testimonial;
+  const { star, name, image, content, designation, backContent } = testimonial;
 
   let ratingIcons = [];
   for (let index = 0; index < star; index++) {
@@ -47,10 +47,9 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
 
           <div className="flip-card-back">
             <div className="back-content">
-              <div className="mb-4 flex items-center justify-center space-x-1">{ratingIcons}</div>
               <h3 className="mb-2 text-lg font-semibold">{name}</h3>
               <p className="text-sm mb-4 opacity-90">{designation}</p>
-              <p className="text-sm leading-relaxed opacity-95">“{content}”</p>
+              <p className="text-sm leading-relaxed opacity-95">{backContent || "Additional feedback from our website users."}</p>
             </div>
           </div>
         </div>
