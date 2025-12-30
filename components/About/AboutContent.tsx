@@ -19,23 +19,15 @@ const AboutContent = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+              <div className="relative aspect-[1/1] overflow-hidden rounded-lg">
                 <Image
-                  src="/images/about/about-image.svg"
+                  src="/images/about/neubytes.png"
                   alt="NeuByte Company"
                   fill
-                  className="object-cover drop-shadow-three dark:hidden"
-                />
-                <Image
-                  src="/images/about/about-image-dark.svg"
-                  alt="NeuByte Company"
-                  fill
-                  className="object-cover drop-shadow-three hidden dark:block"
+                  className="object-cover drop-shadow-three"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 rounded-lg bg-primary px-6 py-3 text-white shadow-lg">
-                <p className="text-sm font-semibold">Innovation Leaders</p>
-              </div>
+             
             </div>
           </motion.div>
 
@@ -109,7 +101,7 @@ const AboutContent = () => {
                   Why Choose NeuByte?
                 </h3>
                 <p className="text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  Rooted in Portland's vibrant tech ecosystem, NeuByte combines local innovation with global expertise. Our team of seasoned professionals is committed to excellence, security, and client success, delivering solutions that not only meet today's demands but anticipate tomorrow's opportunities. Partner with us to unlock the full potential of your data and AI initiatives.
+                  Rooted in Portland&apos;s vibrant tech ecosystem, NeuByte combines local innovation with global expertise. Our team of seasoned professionals is committed to excellence, security, and client success, delivering solutions that not only meet today&apos;s demands but anticipate tomorrow&apos;s opportunities. Partner with us to unlock the full potential of your data and AI initiatives.
                 </p>
               </motion.div>
             </div>

@@ -34,9 +34,7 @@ const CEO = () => {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-4 -left-4 rounded-lg bg-primary px-6 py-3 text-white shadow-lg">
-                  <p className="text-sm font-semibold">Leading Innovation</p>
-                </div>
+              
               </div>
             </motion.div>
 
