@@ -64,26 +64,52 @@ const AboutContent = () => {
                   About NeuByte
                 </h2>
                 <p className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  NeuByte is a pioneering technology company at the forefront of artificial intelligence and web development innovation. Founded with a vision to democratize AI and make advanced technology accessible to businesses of all sizes, we combine cutting-edge AI solutions with human-centered design principles.
-                </p>
-                <p className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  Our team of expert developers, AI specialists, and UX designers work collaboratively to create solutions that not only solve complex business challenges but also deliver exceptional user experiences that drive real results.
+                  NeuByte is a pioneering startup headquartered in Portland, Oregon, specializing in software, data analytics, data science, artificial intelligence (AI), and machine learning (ML). Founded with a vision to empower organizations through cutting-edge technology, we deliver research-driven solutions that transform data into actionable intelligence and drive strategic decision-making.
                 </p>
               </motion.div>
 
-              {/* Company Vision */}
+              {/* Our Mission */}
               <motion.div
                 className="mb-8"
                 variants={fadeInUp}
               >
                 <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
-                  Our Vision
+                  Our Mission
                 </h3>
-                <p className="text-lg font-semibold text-primary mb-4">
-                  &ldquo;Technology should serve humanity, not the other way around.&rdquo;
+                <p className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark">
+                  At NeuByte, we focus on the research and development of advanced AI, ML, software, data science, data analytics, and cybersecurity solutions. Our nature of business centers on providing innovative technology consultation and services that equip businesses and organizations with smarter, data-informed decisions. By bridging complex challenges with practical insights, we enable our clients to thrive in an increasingly data-centric world.
                 </p>
+              </motion.div>
+
+              {/* Products and Services */}
+              <motion.div
+                className="mb-8"
+                variants={fadeInUp}
+              >
+                <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
+                  Products and Services
+                </h3>
+                <p className="mb-4 text-base leading-relaxed text-body-color dark:text-body-color-dark">
+                  NeuByte offers a comprehensive suite of tailored solutions designed to meet diverse needs across industries:
+                </p>
+                <ul className="list-disc list-inside text-base leading-relaxed text-body-color dark:text-body-color-dark space-y-2">
+                  <li>Custom Software Services: Bespoke software development aligned precisely with customer specifications and requirements, ensuring seamless integration and scalability.</li>
+                  <li>Full-Stack Web Development and Maintenance: End-to-end web solutions, from design and development to ongoing maintenance, delivering robust, user-centric digital experiences.</li>
+                  <li>Smart Agentic AI Models and ML Services: Autonomous AI agents and machine learning models that automate workflows, predict outcomes, and optimize operations with unparalleled efficiency.</li>
+                  <li>Data Analytics Services for Businesses: In-depth analytics to uncover hidden patterns, generate actionable insights, and fuel growth through data-driven strategies.</li>
+                </ul>
+              </motion.div>
+
+              {/* Why Choose NeuByte */}
+              <motion.div
+                className="mb-8"
+                variants={fadeInUp}
+              >
+                <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
+                  Why Choose NeuByte?
+                </h3>
                 <p className="text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  We envision a future where AI enhances human potential, where technology bridges gaps rather than creating them, and where innovation serves the greater good of society. Our commitment is to develop ethical, transparent, and accessible AI solutions that empower businesses and individuals alike.
+                  Rooted in Portland's vibrant tech ecosystem, NeuByte combines local innovation with global expertise. Our team of seasoned professionals is committed to excellence, security, and client success, delivering solutions that not only meet today's demands but anticipate tomorrow's opportunities. Partner with us to unlock the full potential of your data and AI initiatives.
                 </p>
               </motion.div>
             </div>
