@@ -36,10 +36,6 @@ const Footer = () => {
                     height={30}
                   />
                 </Link>
-                <p className="dark:text-body-color-dark mb-9 text-base leading-relaxed text-body-color">
-                  NeuByte delivers cutting-edge AI and web solutions that transform businesses.
-                  We combine innovation with expertise to create exceptional digital experiences.
-                </p>
                 <div className="flex items-center space-x-4">
                   <motion.a
                     href="https://facebook.com"

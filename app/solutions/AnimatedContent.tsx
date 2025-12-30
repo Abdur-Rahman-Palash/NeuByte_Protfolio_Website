@@ -34,62 +34,6 @@ const AnimatedContent = () => {
 
   return (
     <>
-      <div className="-mx-4 flex flex-wrap items-center">
-        <motion.div
-          className="w-full px-4 lg:w-1/2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="mb-12 lg:mb-0">
-            <h2 className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
-              Innovative Solutions for the Future
-            </h2>
-            <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-              At NeuByte, we leverage artificial intelligence and modern web technologies to create solutions that transform businesses. Our vision is to bridge the gap between cutting-edge technology and practical applications, delivering seamless experiences that drive growth and innovation.
-            </p>
-            <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-              Founded by a team of passionate developers and AI experts, NeuByte is committed to pushing the boundaries of what&apos;s possible in digital transformation. We believe in creating technology that not only works but also inspires and empowers users worldwide.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="rounded-md bg-primary px-6 py-3 text-white">
-                AI-Powered Solutions
-              </div>
-              <div className="rounded-md bg-secondary px-6 py-3 text-white">
-                Web Innovation
-              </div>
-              <div className="rounded-md bg-tertiary px-6 py-3 text-white">
-                Digital Transformation
-              </div>
-            </div>
-          </div>
-        </motion.div>
-        <motion.div
-          className="w-full px-4 lg:w-1/2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="relative">
-            <div className="relative aspect-square overflow-hidden rounded-lg">
-              <Image
-                src="/images/about/about-image-01.jpg"
-                alt="NeuByte Solutions"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-4 -right-4 rounded-lg bg-primary px-6 py-3 text-white shadow-lg">
-              <p className="text-sm font-semibold">Innovation in Action</p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
       {/* Web Development Section */}
       <motion.div
         className="mt-20"
@@ -100,6 +44,9 @@ const AnimatedContent = () => {
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         <div className="text-center">
+          <h2 className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl">
+            Our Solutions
+          </h2>
           <h3 className="mb-6 text-2xl font-bold text-black dark:text-white sm:text-3xl">
             Web Development Excellence
           </h3>

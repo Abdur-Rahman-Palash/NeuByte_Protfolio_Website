@@ -62,18 +62,11 @@ const Header = () => {
                 } `}
               >
                 <Image
-                  src="/images/logo/logo-2.svg"
-                  alt="logo"
+                  src="/images/logo/NEUNYTE11.png"
+                  alt="NeuByte Logo"
                   width={140}
                   height={30}
-                  className="w-full dark:hidden"
-                />
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
+                  className="w-full h-auto"
                 />
               </Link>
             </div>
@@ -115,49 +108,67 @@ const Header = () => {
                         {menuData.map((menuItem, index) => (
                           <li key={index} className="group relative">
                             {menuItem.path ? (
-                              <Link
-                                href={menuItem.path}
-                                onClick={() => setNavbarOpen(false)}
-                                className={`flex py-2 text-base ${
-                                  usePathName === menuItem.path
-                                    ? "text-primary dark:text-white"
-                                    : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
-                                }`}
+                              <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ duration: 0.2 }}
                               >
-                                {menuItem.title}
-                              </Link>
-                            ) : (
-                              <>
-                                <p
-                                  onClick={() => handleSubmenu(index)}
-                                  className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
+                                <Link
+                                  href={menuItem.path}
+                                  onClick={() => setNavbarOpen(false)}
+                                  className={`flex py-3 px-6 rounded-xl text-base transition-all duration-300 ${
+                                    usePathName === menuItem.path && menuItem.path !== "/home"
+                                      ? "text-primary dark:text-white bg-primary/10"
+                                      : "text-dark hover:text-white hover:bg-primary hover:shadow-md dark:text-white/70 dark:hover:text-dark dark:hover:bg-white dark:hover:shadow-lg"
+                                  }`}
                                 >
                                   {menuItem.title}
-                                  <span className="pl-3">
-                                    <svg width="25" height="24" viewBox="0 0 25 24">
-                                      <path
-                                        fillRule="evenodd"
-                                        clipRule="evenodd"
-                                        d="M6.29289 8.8427C6.68342 8.45217 7.31658 8.45217 7.70711 8.8427L12 13.1356L16.2929 8.8427C16.6834 8.45217 17.3166 8.45217 17.7071 8.8427C18.0976 9.23322 18.0976 9.86639 17.7071 10.2569L12 15.964L6.29289 10.2569C5.90237 9.86639 5.90237 9.23322 6.29289 8.8427Z"
-                                        fill="currentColor"
-                                      />
-                                    </svg>
-                                  </span>
-                                </p>
+                                </Link>
+                              </motion.div>
+                            ) : (
+                              <>
+                                <motion.div
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  <p
+                                    onClick={() => handleSubmenu(index)}
+                                    className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-white group-hover:bg-primary group-hover:shadow-md dark:text-white/70 dark:group-hover:text-dark dark:group-hover:bg-white dark:group-hover:shadow-lg"
+                                  >
+                                    {menuItem.title}
+                                    <span className="pl-3">
+                                      <svg width="25" height="24" viewBox="0 0 25 24">
+                                        <path
+                                          fillRule="evenodd"
+                                          clipRule="evenodd"
+                                          d="M6.29289 8.8427C6.68342 8.45217 7.31658 8.45217 7.70711 8.8427L12 13.1356L16.2929 8.8427C16.6834 8.45217 17.3166 8.45217 17.7071 8.8427C18.0976 9.23322 18.0976 9.86639 17.7071 10.2569L12 15.964L6.29289 10.2569C5.90237 9.86639 5.90237 9.23322 6.29289 8.8427Z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </p>
+                                </motion.div>
                                 <div
                                   className={`submenu relative left-0 top-full rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
                                     openIndex === index ? "block" : "hidden"
                                   }`}
                                 >
                                   {menuItem.submenu.map((submenuItem, index) => (
-                                    <Link
-                                      href={submenuItem.path}
+                                    <motion.div
                                       key={index}
-                                      onClick={() => setNavbarOpen(false)}
-                                      className="block rounded py-2.5 text-sm text-dark hover:text-primary dark:text-white/70 dark:hover:text-white lg:px-3"
+                                      whileHover={{ scale: 1.1 }}
+                                      whileTap={{ scale: 0.95 }}
+                                      transition={{ duration: 0.2 }}
                                     >
-                                      {submenuItem.title}
-                                    </Link>
+                                      <Link
+                                        href={submenuItem.path}
+                                        onClick={() => setNavbarOpen(false)}
+                                        className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-white hover:bg-primary hover:shadow-md dark:text-white/70 dark:hover:text-dark dark:hover:bg-white dark:hover:shadow-lg lg:px-3"
+                                      >
+                                        {submenuItem.title}
+                                      </Link>
+                                    </motion.div>
                                   ))}
                                 </div>
                               </>
@@ -176,53 +187,73 @@ const Header = () => {
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
-                          <Link
-                            href={menuItem.path}
-                            className={`relative flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
-                              usePathName === menuItem.path
-                                ? "text-primary dark:text-white"
-                                : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
-                            }`}
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className="relative"
                           >
-                            {menuItem.title}
-                            <motion.div
-                              className="absolute bottom-0 left-0 h-0.5 bg-primary"
-                              initial={{ scaleX: 0 }}
-                              whileHover={{ scaleX: 1 }}
-                              transition={{ duration: 0.3 }}
-                            />
-                          </Link>
-                        ) : (
-                          <>
-                            <p
-                              onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
+                            <Link
+                              href={menuItem.path}
+                              className={`relative flex py-3 px-5 rounded-xl text-base transition-all duration-300 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none ${
+                                usePathName === menuItem.path && menuItem.path !== "/home"
+                                  ? "text-primary dark:text-white bg-primary/10"
+                                  : "text-dark hover:text-white hover:bg-primary hover:shadow-md hover:px-5 hover:py-3 hover:rounded-md dark:text-white/70 dark:hover:text-dark dark:hover:bg-slate dark:hover:shadow-lg"
+                              }`}
                             >
                               {menuItem.title}
-                              <span className="pl-3">
-                                <svg width="25" height="24" viewBox="0 0 25 24">
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M6.29289 8.8427C6.68342 8.45217 7.31658 8.45217 7.70711 8.8427L12 13.1356L16.2929 8.8427C16.6834 8.45217 17.3166 8.45217 17.7071 8.8427C18.0976 9.23322 18.0976 9.86639 17.7071 10.2569L12 15.964L6.29289 10.2569C5.90237 9.86639 5.90237 9.23322 6.29289 8.8427Z"
-                                    fill="currentColor"
-                                  />
-                                </svg>
-                              </span>
-                            </p>
+                              <motion.div
+                                className="absolute bottom-0 left-0 h-0.5 bg-primary rounded-full"
+                                initial={{ scaleX: 0 }}
+                                whileHover={{ scaleX: 1 }}
+                                transition={{ duration: 0.3 }}
+                              />
+                            </Link>
+                          </motion.div>
+                        ) : (
+                          <>
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                              transition={{ duration: 0.2 }}
+                              className="relative"
+                            >
+                              <p
+                                onClick={() => handleSubmenu(index)}
+                                className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-white group-hover:bg-primary group-hover:shadow-md group-hover:px-5 group-hover:py-3 group-hover:rounded-md dark:text-white/70 dark:group-hover:text-dark dark:group-hover:bg-white dark:group-hover:shadow-lg lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none"
+                              >
+                                {menuItem.title}
+                                <span className="pl-3">
+                                  <svg width="25" height="24" viewBox="0 0 25 24">
+                                    <path
+                                      fillRule="evenodd"
+                                      clipRule="evenodd"
+                                      d="M6.29289 8.8427C6.68342 8.45217 7.31658 8.45217 7.70711 8.8427L12 13.1356L16.2929 8.8427C16.6834 8.45217 17.3166 8.45217 17.7071 8.8427C18.0976 9.23322 18.0976 9.86639 17.7071 10.2569L12 15.964L6.29289 10.2569C5.90237 9.86639 5.90237 9.23322 6.29289 8.8427Z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </span>
+                              </p>
+                            </motion.div>
                             <div
                               className={`submenu relative left-0 top-full rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
                               {menuItem.submenu.map((submenuItem, index) => (
-                                <Link
-                                  href={submenuItem.path}
+                                <motion.div
                                   key={index}
-                                  className="block rounded py-2.5 text-sm text-dark hover:text-primary dark:text-white/70 dark:hover:text-white lg:px-3"
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  transition={{ duration: 0.2 }}
                                 >
-                                  {submenuItem.title}
-                                </Link>
+                                  <Link
+                                    href={submenuItem.path}
+                                    className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-white hover:bg-primary hover:shadow-md dark:text-white/70 dark:hover:text-dark dark:hover:bg-white dark:hover:shadow-lg lg:px-3"
+                                  >
+                                    {submenuItem.title}
+                                  </Link>
+                                </motion.div>
                               ))}
                             </div>
                           </>
