@@ -90,7 +90,7 @@ const Footer = () => {
 
             {/* Quick Links */}
             <motion.div
-              className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12"
+              className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-3/12"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -186,6 +186,36 @@ const Footer = () => {
             </motion.div>
 
             {/* Newsletter */}
+            <motion.div
+              className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-3/12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="mb-8 lg:mb-12">
+                <h2 className="mb-6 text-lg font-semibold text-black dark:text-white">
+                  Newsletter
+                </h2>
+                <p className="mb-4 text-sm text-body-color dark:text-body-color-dark">
+                  Subscribe to get latest updates
+                </p>
+                <form className="flex">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="flex-1 rounded-l-lg border border-body-color px-3 py-2 text-sm dark:border-body-color-dark dark:bg-gray-dark"
+                  />
+                  <button
+                    type="submit"
+                    className="rounded-r-lg bg-primary px-4 py-2 text-sm text-white hover:bg-primary/90"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </motion.div>
            
           </div>
 
