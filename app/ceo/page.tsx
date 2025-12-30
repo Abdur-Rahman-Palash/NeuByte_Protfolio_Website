@@ -70,11 +70,22 @@ const CEO = () => {
                   variants={fadeInUp}
                 >
                   <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
-                    Industry Skills and Leadership
+                    Dr. Sarkar — Professional Highlights
                   </h3>
-                  <p className="mb-4 text-body-color dark:text-body-color-dark">
-                    Dr. Sarkar has over 13 years of industry experience and leadership at Intel Corporation, where he spearheaded high-volume yield data analysis—enabling critical decisions for Intel&apos;s multi-billion-dollar cutting-edge computer chip manufacturing process line across multiple generations of technology nodes, including Intel&apos;s first AI PC, Lunar Lake. He used Python and JMP scripting extensively to automate day-to-day critical workflows in high volume product testing and data analysis, and optimized efficiency and scalability, skills that now supercharge NeuByte&apos;s smart agentic AI development for real-world enterprise impact and beyond.
-                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-body-color dark:text-body-color-dark">
+                    <li>Over 13 years of industry experience and leadership at Intel Corporation</li>
+                    <li>Led high-volume yield data analysis to support critical decision-making in multi-billion-dollar semiconductor manufacturing</li>
+                    <li>Played a key role across multiple generations of advanced technology nodes</li>
+                    <li>Contributed to Intel&apos;s first AI PC platform — Lunar Lake</li>
+                    <li className="font-semibold">Extensively used Python and JMP scripting to automate:</li>
+                    <ul className="list-disc list-inside ml-6 space-y-1">
+                      <li>High-volume product testing workflows</li>
+                      <li>Day-to-day critical data analysis processes</li>
+                    </ul>
+                    <li>Improved operational efficiency, scalability, and reliability of large-scale testing systems</li>
+                    <li>Brings deep expertise in data-driven engineering and automation</li>
+                    <li>Now applies this experience to supercharge NeuByte&apos;s agentic AI solutions for real-world, enterprise-grade impact</li>
+                  </ul>
                 </motion.div>
                 <motion.div
                   className="mb-8"
