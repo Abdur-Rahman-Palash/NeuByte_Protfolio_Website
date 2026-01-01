@@ -97,9 +97,12 @@ const Terms = () => {
                 If you have any questions about these Terms of Service, please contact us at:
               </p>
               <p>
-                Email: legal@neubyte.com<br />
-                Phone: (555) 123-4567<br />
-                Address: Portland, Oregon, USA
+                Email: 
+info@neubyte.tech <br />
+                Phone: 1-503-437-2165<br />
+                Address: 18165 NW Corinthian St
+Portland, Oregon 97229
+USA
               </p>
             </div>
           </div>
