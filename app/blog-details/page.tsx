@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: { id: string };
+  searchParams: Promise<{ id: string }>;
 }
 
 const BlogDetailsPage = async ({ searchParams }: PageProps) => {

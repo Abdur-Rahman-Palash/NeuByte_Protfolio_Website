@@ -4,7 +4,7 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import SectionTitle from "@/components/Common/SectionTitle";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-// using a plain <img> to avoid Next Image runtime mismatch in this client page
+import Image from "next/image";
 
 const CEO = () => {
   return (
@@ -27,10 +27,11 @@ const CEO = () => {
             >
               <div className="relative">
                 <div className="relative aspect-[3/5] overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src="/images/blog/CEO.jpeg"
                     alt="CEO Ataur Sarkar"
-                    className="absolute inset-0 h-full w-full object-cover  "
+                    fill
+                    className="object-cover"
                   />
                 </div>
               
