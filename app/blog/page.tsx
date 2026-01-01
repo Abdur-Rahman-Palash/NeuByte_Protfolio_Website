@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog Page | NeuByte",
-  description: "This is Blog Page for Startup Nextjs Template",
+  description: "",
   // other metadata
 };
 
@@ -15,7 +15,7 @@ const Blog = () => {
     <>
       <Breadcrumb
         pageName="NeuByte Blogs"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        description=""
       />
 
       <section className="pb-[120px] pt-[120px]">

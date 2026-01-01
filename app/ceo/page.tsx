@@ -16,7 +16,7 @@ const CEO = () => {
 
       <section className="pb-[120px] pt-[120px]">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap items-center">
+          <div className="-mx-4 flex flex-wrap items-start">
             <motion.div
               className="w-full px-4 lg:w-1/2"
               initial="hidden"
@@ -26,7 +26,7 @@ const CEO = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="relative">
-                <div className="relative aspect-[3/5] overflow-hidden rounded-lg">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
                   <Image
                     src="/images/blog/CEO.jpeg"
                     alt="CEO Ataur Sarkar"

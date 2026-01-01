@@ -8,7 +8,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <>
-      <footer className="dark:bg-gray-dark relative z-10 bg-white pt-12 md:pt-16 lg:pt-20">
+      <footer className="dark:bg-gray-dark relative z-10 bg-white pt-12 md:pt-16 lg:pt-20 ">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             {/* Company Info */}
@@ -185,7 +185,6 @@ const Footer = () => {
                 </div>
               </div>
             </motion.div>
-           
           </div>
 
           <div className="h-px w-full bg-gradient-to-r from-transparent via-body-color to-transparent dark:via-white"></div>

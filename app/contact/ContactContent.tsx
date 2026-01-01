@@ -186,10 +186,7 @@ const ContactContent = () => {
                     Email Us
                   </h4>
                   <p className="text-base text-body-color dark:text-body-color-dark">
-                    hello@neubyte.com
-                  </p>
-                  <p className="text-base text-body-color dark:text-body-color-dark">
-                    support@neubyte.com
+                    info@neubyte.tech
                   </p>
                 </div>
               </motion.div>
@@ -225,11 +222,9 @@ const ContactContent = () => {
                     Call Us
                   </h4>
                   <p className="text-base text-body-color dark:text-body-color-dark">
-                    +1 (555) 123-4567
+                    1-503-437-2165
                   </p>
-                  <p className="text-base text-body-color dark:text-body-color-dark">
-                    Mon - Fri: 9AM - 6PM EST
-                  </p>
+                 
                 </div>
               </motion.div>
             </div>
