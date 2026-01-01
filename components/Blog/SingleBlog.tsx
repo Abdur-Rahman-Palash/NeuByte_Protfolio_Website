@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 
 const SingleBlog = ({ blog }: { blog: Blog }) => {
-  const { title, image, tags } = blog;
+  const { title, image, tags, excerpt } = blog;
   return (
     <>
       <motion.div
@@ -48,6 +48,9 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
               {title}
             </Link>
           </h3>
+          <p className="mb-4 text-base text-body-color dark:text-body-color-dark">
+            <span dangerouslySetInnerHTML={{ __html: excerpt }} />
+          </p>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, index) => (
               <span

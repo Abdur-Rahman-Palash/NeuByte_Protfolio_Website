@@ -71,7 +71,7 @@ const Video = () => {
             </button>
             <div className="aspect-video w-full">
               <iframe
-                src="https://www.youtube.com/embed/L61p2uyiMSo?autoplay=1&start=1"
+                src="https://streamable.com/e/vkukcz"
                 title="NeuByte Video"
                 className="h-full w-full rounded-lg"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
