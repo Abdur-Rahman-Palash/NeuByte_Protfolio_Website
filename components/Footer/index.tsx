@@ -153,7 +153,7 @@ const Footer = () => {
                     </div>
                     <div>
                       <p className="text-sm text-body-color dark:text-body-color-dark">
-                        <a href="mailto:hello@neubyte.com" className="hover:text-primary">hello@neubyte.com</a>
+                        <a href="mailto:info@neubyte.tech" className="hover:text-primary">info@neubyte.tech</a>
                       </p>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ const Footer = () => {
                     </div>
                     <div>
                       <p className="text-sm text-body-color dark:text-body-color-dark">
-                        <a href="tel:+15551234567" className="hover:text-primary">+1 (555) 123-4567</a>
+                        <a href="tel:+15034372165" className="hover:text-primary">1-503-437-2165</a>
                       </p>
                     </div>
                   </div>
@@ -177,8 +177,9 @@ const Footer = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-body-color dark:text-body-color-dark">123 Innovation St<br />
-                        Tech City, TC 12345</p>
+                      <p className="text-sm text-body-color dark:text-body-color-dark">18165 NW Corinthian St<br />
+                        Portland, Oregon 97229<br />
+                        USA</p>
                     </div>
                   </div>
                 </div>
