@@ -2,14 +2,14 @@ import { Blog } from "@/types/blog";
 
 const blogData: Blog[] = [
   {
-    title: "The Future of AI in Web Development",
+    title: "AI for Small Businesses: Simple Ways to Save Time, Cut Costs, and Grow Faster",
     image: "/images/blog/blog-01.jpg",
-    tags: ["AI", "Web Development"],
+    tags: ["AI", "Automation"],
   },
   {
-    title: "Building Responsive Web Apps with Modern Frameworks",
+    title: "From Static Sites to Smart Systems: How AI-Native Web Development Is Changing Small Business Websites",
     image: "/images/blog/blog-02.jpg",
-    tags: ["Web Development", "Responsive Design"],
+    tags: ["AI", "Web Development", "Small Business"],
   },
   {
     title: "Machine Learning Integration in Web Applications",
