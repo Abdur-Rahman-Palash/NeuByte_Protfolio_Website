@@ -12,7 +12,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "NeuByte | Future with AI",
-  description: "This is Home for Startup Nextjs Template",
+  description: "Transform your business with cutting-edge AI solutions and modern web development. NeuByte delivers innovative technology solutions for startups and enterprises.",
   // other metadata
 };
 
