@@ -1,39 +1,64 @@
-import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from "nodemailer";
 
-export async function POST(request: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
+    const { name, email, message } = await req.json();
 
-    // Basic validation
-    const { name, email, subject, message } = body;
-
+    // Basic validation (important)
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+      return new Response(
+        JSON.stringify({ success: false, error: "Missing fields" }),
         { status: 400 }
       );
     }
 
-    // Here you can:
-    // 1. Save to database
-    // 2. Send email
-    // 3. Integrate with CRM
-    // 4. Send to external API
-
-    console.log('Contact form submission:', { name, email, subject, message });
-
-    // Simulate processing
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    return NextResponse.json({
-      success: true,
-      message: 'Message sent successfully!'
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
     });
 
+
+    await transporter.sendMail({
+      from: `"NeuByte Website" <${process.env.SMTP_USER}>`,
+      to: "info@neubyte.tech",
+      subject: "New Contact Form Submission",
+      html: `
+        <h3>New Contact Message</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+
+
+    await transporter.sendMail({
+      from: `"NeuByte" <info@neubyte.tech>`,
+      to: email,
+      subject: "Warm welcome to NeuByte",
+      html: `
+        <p>Dear ${name},</p>
+        <p>Warm welcome to <strong>NeuByte</strong>.</p>
+        <p>Our dedicated team will connect with you soon.</p>
+        <br/>
+        <p>Thanks,<br/>NeuByte</p>
+      `,
+    });
+
+    return new Response(
+      JSON.stringify({ success: true }),
+      { status: 200 }
+    );
   } catch (error) {
-    console.error('Contact API error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
+    console.error("Contact API Error:", error);
+
+    return new Response(
+      JSON.stringify({ success: false }),
       { status: 500 }
     );
   }

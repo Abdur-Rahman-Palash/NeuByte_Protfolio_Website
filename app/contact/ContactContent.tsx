@@ -8,7 +8,6 @@ const ContactContent = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
 
@@ -37,7 +36,7 @@ const ContactContent = () => {
 
       if (response.ok) {
         setSubmitMessage("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", message: "" });
       } else {
         setSubmitMessage(data.error || "Failed to send message");
       }
@@ -88,19 +87,6 @@ const ContactContent = () => {
                 name="email"
                 placeholder="Your Email"
                 value={formData.email}
-                onChange={handleChange}
-                className="w-full rounded-md border border-body-color border-opacity-50 bg-transparent px-6 py-4 text-base text-body-color placeholder-body-color/60 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-white dark:border-opacity-30 dark:bg-dark dark:text-white dark:focus:border-primary"
-                whileFocus={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-                required
-              />
-            </div>
-            <div className="mb-6">
-              <motion.input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
                 onChange={handleChange}
                 className="w-full rounded-md border border-body-color border-opacity-50 bg-transparent px-6 py-4 text-base text-body-color placeholder-body-color/60 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-white dark:border-opacity-30 dark:bg-dark dark:text-white dark:focus:border-primary"
                 whileFocus={{ scale: 1.02 }}

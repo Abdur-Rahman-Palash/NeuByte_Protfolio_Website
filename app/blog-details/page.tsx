@@ -1,16 +1,29 @@
 import SharePost from "@/components/Blog/SharePost";
 import TagButton from "@/components/Blog/TagButton";
 import Image from "next/image";
+import blogData from "@/components/Blog/blogData";
+import { notFound } from "next/navigation";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI for Small Businesses | NeuByte",
-  description: "Discover simple ways AI can save time, cut costs, and grow your small business. Practical AI solutions from NeuByte.",
-  // other metadata
+  title: "Blog Details | NeuByte",
+  description: "Read our latest blog posts on AI and web development.",
 };
 
-const BlogDetailsPage = () => {
+interface PageProps {
+  searchParams: { id: string };
+}
+
+const BlogDetailsPage = async ({ searchParams }: PageProps) => {
+  const params = await searchParams;
+  const id = parseInt(params.id);
+  const blog = blogData.find((b) => b.id === id);
+
+  if (!blog) {
+    notFound();
+  }
+
   return (
     <>
       <section className="pb-[120px] pt-[150px]">
@@ -19,7 +32,7 @@ const BlogDetailsPage = () => {
             <div className="w-full px-4 lg:w-8/12">
               <div>
                 <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
-                  From Static Sites to Smart Systems: How AI-Native Web Development Is Changing Small Business Websites
+                  {blog.title}
                 </h2>
                 <div className="mb-10 flex flex-wrap items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="flex flex-wrap items-center">
@@ -27,7 +40,7 @@ const BlogDetailsPage = () => {
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                           <Image
-                            src="/images/blog/CEO.png"
+                            src="/images/blog/CEO.jpeg"
                             alt="author"
                             fill
                           />
@@ -61,35 +74,6 @@ const BlogDetailsPage = () => {
                         </span>
                         01 Jan 2026
                       </p>
-                      <p className="mr-5 flex items-center text-base font-medium text-body-color">
-                        <span className="mr-3">
-                          <svg
-                            width="18"
-                            height="13"
-                            viewBox="0 0 18 13"
-                            className="fill-current"
-                          >
-                            <path d="M15.6375 0H1.6875C0.759375 0 0 0.759375 0 1.6875V10.6875C0 11.3062 0.309375 11.8406 0.84375 12.15C1.09687 12.2906 1.40625 12.375 1.6875 12.375C1.96875 12.375 2.25 12.2906 2.53125 12.15L5.00625 10.7156C5.11875 10.6594 5.23125 10.6312 5.34375 10.6312H15.6094C16.5375 10.6312 17.2969 9.87187 17.2969 8.94375V1.6875C17.325 0.759375 16.5656 0 15.6375 0ZM16.3406 8.94375C16.3406 9.3375 16.0312 9.64687 15.6375 9.64687H5.37187C5.09062 9.64687 4.78125 9.73125 4.52812 9.87187L2.05313 11.3063C1.82812 11.4187 1.575 11.4187 1.35 11.3063C1.125 11.1938 1.0125 10.9688 1.0125 10.7156V1.6875C1.0125 1.29375 1.32188 0.984375 1.71563 0.984375H15.6656C16.0594 0.984375 16.3687 1.29375 16.3687 1.6875V8.94375H16.3406Z" />
-                            <path d="M12.2342 3.375H4.69668C4.41543 3.375 4.19043 3.6 4.19043 3.88125C4.19043 4.1625 4.41543 4.3875 4.69668 4.3875H12.2623C12.5435 4.3875 12.7685 4.1625 12.7685 3.88125C12.7685 3.6 12.5154 3.375 12.2342 3.375Z" />
-                            <path d="M11.0529 6.55322H4.69668C4.41543 6.55322 4.19043 6.77822 4.19043 7.05947C4.19043 7.34072 4.41543 7.56572 4.69668 7.56572H11.0811C11.3623 7.56572 11.5873 7.34072 11.5873 7.05947C11.5873 6.77822 11.3342 6.55322 11.0529 6.55322Z" />
-                          </svg>
-                        </span>
-                        50
-                      </p>
-                      <p className="flex items-center text-base font-medium text-body-color">
-                        <span className="mr-3">
-                          <svg
-                            width="20"
-                            height="12"
-                            viewBox="0 0 20 12"
-                            className="fill-current"
-                          >
-                            <path d="M10.2559 3.8125C9.03711 3.8125 8.06836 4.8125 8.06836 6C8.06836 7.1875 9.06836 8.1875 10.2559 8.1875C11.4434 8.1875 12.4434 7.1875 12.4434 6C12.4434 4.8125 11.4746 3.8125 10.2559 3.8125ZM10.2559 7.09375C9.66211 7.09375 9.16211 6.59375 9.16211 6C9.16211 5.40625 9.66211 4.90625 10.2559 4.90625C10.8496 4.90625 11.3496 5.40625 11.3496 6C11.3496 6.59375 10.8496 7.09375 10.2559 7.09375Z" />
-                            <path d="M19.7559 5.625C17.6934 2.375 14.1309 0.4375 10.2559 0.4375C6.38086 0.4375 2.81836 2.375 0.755859 5.625C0.630859 5.84375 0.630859 6.125 0.755859 6.34375C2.81836 9.59375 6.38086 11.5312 10.2559 11.5312C14.1309 11.5312 17.6934 9.59375 19.7559 6.34375C19.9121 6.125 19.9121 5.84375 19.7559 5.625ZM10.2559 10.4375C6.84961 10.4375 3.69336 8.78125 1.81836 5.96875C3.69336 3.1875 6.84961 1.53125 10.2559 1.53125C13.6621 1.53125 16.8184 3.1875 18.6934 5.96875C16.8184 8.78125 13.6621 10.4375 10.2559 10.4375Z" />
-                          </svg>
-                        </span>
-                        35
-                      </p>
                     </div>
                   </div>
                   <div className="mb-5">
@@ -102,9 +86,7 @@ const BlogDetailsPage = () => {
                   </div>
                 </div>
                 <div>
-                  <p className="mb-10 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                    For a long time, websites were simple. These websites showed your business name, listed your services, and had a contact form at the bottom. Once a site was built, it mostly stayed the same.
-                  </p>
+                  <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                   <p className="mb-10 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
                     That type of website still exists today, but the way people interact with businesses has dramatically changed. Customers expect faster responses, personalized experiences, and smoother online journeys. A static website often cannot keep up with this demand.
                   </p>
@@ -416,9 +398,9 @@ const BlogDetailsPage = () => {
                         Popular Tags :
                       </h4>
                       <div className="flex items-center">
-                        <TagButton text="AI" />
-                        <TagButton text="Web Development" />
-                        <TagButton text="Small Business" />
+                        {blog.tags.map((tag, index) => (
+                          <TagButton key={index} text={tag} />
+                        ))}
                       </div>
                     </div>
                     <div className="mb-5">

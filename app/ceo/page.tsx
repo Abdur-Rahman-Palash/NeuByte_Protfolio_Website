@@ -26,7 +26,7 @@ const CEO = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="relative">
-                <div className="relative aspect-[3/3] overflow-hidden rounded-lg">
+                <div className="relative aspect-[3/5] overflow-hidden rounded-lg">
                   <img
                     src="/images/blog/CEO.jpeg"
                     alt="CEO Ataur Sarkar"
