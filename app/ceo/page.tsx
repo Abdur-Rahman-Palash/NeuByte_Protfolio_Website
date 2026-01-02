@@ -125,12 +125,12 @@ const CEO = () => {
                   <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
                     Professional Credentials
                   </h3>
-                  
+                  <ul className="list-disc list-inside space-y-2 text-body-color dark:text-body-color-dark">
                  <li>Licensed Professional Engineer (PE) in Oregon, USA, specializing in Electronics, Controls, and Communications — a distinction held by very few globally.
 </li>
 <li>
 Proficient in fabrication, advanced instrumentation, and chip design platforms.
-</li>
+</li></ul>
                 </motion.div>
                <motion.div
                   className="mb-8"
@@ -139,14 +139,14 @@ Proficient in fabrication, advanced instrumentation, and chip design platforms.
                   <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
                     Outlook 
                   </h3>
-                  
+                  <ul className="list-disc list-inside space-y-2 text-body-color dark:text-body-color-dark">
                  <li>Dr. Sarkar steers Neubyte reimagine enterprise AI and ML through scientific rigor and real-world application
 </li>
 <li>
 Integrates academic and industrial excellence to build autonomous, ethical, and scalable systems
 </li>
 <li>Champions data-driven growth and ethical AI for a rapidly evolving digital economy.</li>
-<li>Steers Neubyte to be a global leader in adaptive and intelligent enterprise technology.</li>
+<li>Steers Neubyte to be a global leader in adaptive and intelligent enterprise technology.</li> </ul>
                 </motion.div>
               </div>
             </motion.div>

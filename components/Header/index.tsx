@@ -61,13 +61,14 @@ const Header = () => {
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
-                <Image
-                  src="/images/logo/NEUNYTE11.png"
-                  alt="NeuByte Logo"
-                  width={140}
-                  height={30}
-                  className="w-full h-auto"
-                />
+                <div className=" flex justify-center items-center mx-auto">
+                  <Image
+                    src="/images/logo/NEUNYTE11.png"
+                    alt="NeuByte Logo"
+                    width={140}
+                    height={30}
+                  />
+                </div>
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">

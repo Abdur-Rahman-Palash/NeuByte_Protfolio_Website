@@ -8,7 +8,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <>
-      <footer className="dark:bg-gray-dark relative z-10 bg-white pt-12 md:pt-16 lg:pt-20 ">
+      <footer className="dark:bg-gray-dark relative z-10 bg-white pl-4 pr-0 pt-12 md:pt-16 lg:pt-20 ">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             {/* Company Info */}
@@ -22,16 +22,18 @@ const Footer = () => {
             >
               <div className="mb-8 max-w-[300px] lg:mb-12">
                 <Link href="/home" className="mb-6 inline-block">
-                  <Image
-                    src="/images/logo/NEUNYTE11.png"
-                    alt="NeuByte Logo"
-                    width={140}
-                    height={30}
-                    className="w-full h-auto"
-                  />
+                  <div className="flex justify-center items-center">
+                    <Image
+                      src="/images/logo/NEUNYTE11.png"
+                      alt="NeuByte Logo"
+                      width={140}
+                      height={30}
+                      className="w-auto h-auto"
+                    />
+                  </div>
                 </Link>
-                <div className="mt-2 mb-3 text-sm text-body-color dark:text-body-color-dark">Connect with</div>
-                <div className="flex items-center space-x-3">
+                <div className="mt-2 mb-3 text-sm text-body-color dark:text-body-color-dark text-center">Connect with</div>
+                <div className="flex items-center justify-center space-x-3">
                   <motion.a
                     href="https://facebook.com"
                     aria-label="Facebook"
@@ -88,57 +90,14 @@ const Footer = () => {
               </div>
             </motion.div>
 
-            {/* Quick Links */}
+            {/* Contact Info */}
             <motion.div
-              className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-4/12"
+              className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-4/12"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="mb-8 lg:mb-12">
-                <h2 className="mb-6 text-lg font-semibold text-black dark:text-white">
-                  Quick Links
-                </h2>
-                <ul className="space-y-1">
-                  <li>
-                    <Link href="/home" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/solutions" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
-                      Solutions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/blog" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Contact Info */}
-            <motion.div
-              className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-4/12"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="mb-8 lg:mb-12">
                 <h2 className="mb-6 text-lg font-semibold text-black dark:text-white">
@@ -185,25 +144,68 @@ const Footer = () => {
                 </div>
               </div>
             </motion.div>
+
+            {/* Quick Links */}
+            <motion.div
+              className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-4/12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="mb-8 lg:mb-12">
+                <h2 className="mb-6 text-lg font-semibold text-black dark:text-white">
+                  Quick Links
+                </h2>
+                <ul className="space-y-1">
+                  <li>
+                    <Link href="/home" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/about" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
+                      Solutions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/contact" className="dark:text-body-color-dark inline-block text-sm text-body-color duration-300 hover:text-primary dark:hover:text-primary">
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
 
           <div className="h-px w-full bg-gradient-to-r from-transparent via-body-color to-transparent dark:via-white"></div>
 
           <div className="py-6">
             <motion.div
-              className="flex flex-wrap items-center justify-between"
+              className="flex flex-wrap items-center justify-center"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-                <div className="mb-4 text-sm text-body-color dark:text-body-color-dark">
+                <div className="mb-4 text-sm text-body-color dark:text-body-color-dark text-center">
                 &copy; {year} NeuByte. All rights reserved.
               </div>
               <div className="flex items-center space-x-6">
-                <Link href="/privacy" className="text-sm text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary">Privacy Policy</Link>
-                <Link href="/terms" className="text-sm text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary">Terms of Service</Link>
+                <Link href="/privacy" className="hidden text-sm text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary">Privacy Policy</Link>
+                <Link href="/terms" className="hidden text-sm text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary">Terms of Service</Link>
               </div>
             </motion.div>
           </div>

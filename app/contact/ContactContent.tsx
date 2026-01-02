@@ -24,7 +24,8 @@ const ContactContent = () => {
     setSubmitMessage("");
 
     try {
-      const response = await fetch('/api/contact', {
+      // Using Formspree for static hosting compatibility
+      const response = await fetch('https://formspree.io/f/xpznqgkq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,13 +33,11 @@ const ContactContent = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        setSubmitMessage("Message sent successfully!");
+        setSubmitMessage("Message sent successfully! We'll get back to you soon.");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setSubmitMessage(data.error || "Failed to send message");
+        setSubmitMessage("Failed to send message. Please try again.");
       }
     } catch (error) {
       setSubmitMessage("Network error. Please try again.");
