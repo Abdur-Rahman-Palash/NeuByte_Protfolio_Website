@@ -11,7 +11,7 @@ const CEO = () => {
     <>
       <Breadcrumb
         pageName="Meet Our CEO"
-        description="Learn about Ataur Sarkar, PhD, PE, the visionary leader driving NeuByte's AI innovation from Intel's cutting-edge technology to pioneering AI agents."
+        description="Learn about our visionary leader, Dr. Ataur Sarkar, whose years of experience on Intel’s cutting‑edge technologies now drive Neubyte’s pioneering AI innovation.'"
       />
 
       <section className="pb-[120px] pt-[120px]">
@@ -34,7 +34,7 @@ const CEO = () => {
                     className="object-cover"
                   />
                 </div>
-              
+
               </div>
             </motion.div>
 
@@ -57,34 +57,29 @@ const CEO = () => {
                   className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl"
                   variants={fadeInUp}
                 >
-                  Ataur Sarkar, PhD, PE
+                  Ataur Sarkar, PhD, <span className="text-2xl">PE (Professional Engineer)</span> 
                 </motion.h2>
                 <motion.p
                   className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark"
                   variants={fadeInUp}
                 >
-                  Ataur Sarkar, PhD, PE, serves as President, CEO, and Chief Research Executive (CRE) of NeuByte, a Portland, Oregon-based startup pioneering AI agents, machine learning, and data analytics solutions.
+                 Dr. Ataur Sarkar serves as the CEO and CRE (Chief Research Executive) of NeuByte, a Portland, Oregon-based startup pioneering AI agents, machine learning, and data analytics solutions.'
                 </motion.p>
                 <motion.div
                   className="mb-8"
                   variants={fadeInUp}
                 >
                   <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
-                    Dr. Sarkar — Professional Highlights
+                    Industry Skills and Leadership
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-body-color dark:text-body-color-dark">
-                    <li>Over 13 years of industry experience and leadership at Intel Corporation</li>
-                    <li>Led high-volume yield data analysis to support critical decision-making in multi-billion-dollar semiconductor manufacturing</li>
-                    <li>Played a key role across multiple generations of advanced technology nodes</li>
-                    <li>Contributed to Intel&apos;s first AI PC platform — Lunar Lake</li>
-                    <li className="font-semibold">Extensively used Python and JMP scripting to automate:</li>
-                    <ul className="list-disc list-inside ml-6 space-y-1">
-                      <li>High-volume product testing workflows</li>
-                      <li>Day-to-day critical data analysis processes</li>
-                    </ul>
-                    <li>Improved operational efficiency, scalability, and reliability of large-scale testing systems</li>
-                    <li>Brings deep expertise in data-driven engineering and automation</li>
-                    <li>Now applies this experience to supercharge NeuByte&apos;s agentic AI solutions for real-world, enterprise-grade impact</li>
+                    <li>Worked 13+ years at Intel Corporation, leading high-volume yield data and fault isolation and failure analysis for multi-billion-dollar chip manufacturing.</li>
+                    <li>Worked across multiple technology generations, including Intel’s first AI PC, Lunar Lake.
+</li>
+                    <li>Performed automation of complex workflows and boosting production efficiency</li>
+                    <li>Now applying above priceless skills to Neubyte’s intelligent AI agents for real-world impact.
+</li>
+                    
                   </ul>
                 </motion.div>
                 <motion.div
@@ -92,11 +87,26 @@ const CEO = () => {
                   variants={fadeInUp}
                 >
                   <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
-                    Academic and Research Excellence
+                   Academic and Research Excellence
                   </h3>
-                  <p className="mb-4 text-body-color dark:text-body-color-dark">
-                    A PhD from University of California, Davis in Electrical Engineering, with MSc degrees from University of Calgary, Canada, and BUET, and being top two in BSc, Dr. Sarkar has authored publications in automation of commercial electrical energy demand forecasting, nanophotonics, VLSI design, and optical communications, earning NSF Fellowship and best poster awards. As a former BUET Assistant Professor of Electrical and Electronic Engineering and part time faculty of several private universities in Bangladesh- MIST, NSU, AUST to name a few- with 12 years of university teaching, he instructed and mentored hundreds of young engineering minds across the globe.
-                  </p>
+        
+                  <ul className="list-disc list-inside space-y-2 text-body-color dark:text-body-color-dark">
+                    <li>Holds a PhD in Electrical Engineering from UC Davis, with MSc degrees from University of Calgary and BUET (ranked top two in class).
+</li>
+                    <li>Published research work across disciplines in software development, nanophotonics, VLSI design, and optical communications.
+
+</li>
+                    <li>Recipient of NSF Fellowship and best poster awards</li>
+                    <li>Former Assistant Professor at BUET and part-time faculty at several private universities with 12+ years of academic leadership.
+
+</li>
+<li>Mentored hundreds of engineers globally, fostering innovation and next-generation research talent.
+
+
+</li>
+
+                    
+                  </ul>
                 </motion.div>
                 <motion.div
                   className="mb-8"
@@ -105,16 +115,29 @@ const CEO = () => {
                   <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
                     Professional Credentials
                   </h3>
-                  <p className="mb-4 text-body-color dark:text-body-color-dark">
-                    Dr. Sarkar is a licensed Professional Engineer (PE) in the State of Oregon, USA, in Electronics, Controls, and Communications. Holding a PE in this discipline is a very rare, unique, and highly prestigious achievement among the top talents in the field of engineering. Dr. Sarkar excels in cleanroom fabrication, hardware tools (SEM, AFM, TEM), and chip design software (Cadence, ADS). His transition from Intel to NeuByte positions the company at the forefront of AI- and ML-native innovation.
-                  </p>
+                  
+                 <li>Licensed Professional Engineer (PE) in Oregon, USA, specializing in Electronics, Controls, and Communications — a distinction held by very few globally.
+</li>
+<li>
+Proficient in fabrication, advanced instrumentation, and chip design platforms.
+</li>
                 </motion.div>
-                <motion.p
-                  className="text-lg font-semibold text-primary"
+               <motion.div
+                  className="mb-8"
                   variants={fadeInUp}
                 >
-                  &ldquo;Under Dr. Sarkar&apos;s guidance with solid experience in top tech industry and academia and research, NeuByte looks forward to redefine enterprise AI and ML applications by integrating rigorous research with practical, autonomous deployments, empowering organizations to harness data for ethical, scalable growth in a rapidly evolving tech landscape.&rdquo;
-                </motion.p>
+                  <h3 className="mb-4 text-xl font-semibold text-black dark:text-white">
+                    Outlook 
+                  </h3>
+                  
+                 <li>Dr. Sarkar steers Neubyte reimagine enterprise AI and ML through scientific rigor and real-world application
+</li>
+<li>
+Integrates academic and industrial excellence to build autonomous, ethical, and scalable systems
+</li>
+<li>Champions data-driven growth and ethical AI for a rapidly evolving digital economy.</li>
+<li>Steers Neubyte to be a global leader in adaptive and intelligent enterprise technology.</li>
+                </motion.div>
               </div>
             </motion.div>
           </div>
