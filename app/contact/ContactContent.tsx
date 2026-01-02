@@ -243,7 +243,7 @@ const ContactContent = () => {
             <ul className="space-y-2 text-base text-body-color dark:text-body-color-dark">
               <li>• Cutting-edge AI solutions</li>
               <li>• Modern web development</li>
-              <li>• 24/7 technical support</li>
+              
               <li>• Agile development process</li>
             </ul>
           </motion.div>

@@ -48,6 +48,9 @@ module.exports = {
         "stroke-dark": "#353943",
         "bg-color-dark": "#171C28",
       },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
 
       boxShadow: {
         signUp: "0px 5px 10px rgba(4, 10, 34, 0.2)",

@@ -10,9 +10,19 @@ const CEO = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Meet Our CEO"
-        description="Learn about our visionary leader, Dr. Ataur Sarkar, whose years of experience on Intel&apos;s cutting‑edge technologies now drive Neubyte&apos;s pioneering AI innovation."
-      />
+  pageName="Meet Our CEO"
+  description={
+    <span>
+      Learn about our visionary leader, Dr. Ataur Sarkar, whose years of experience{" "}
+      <span className="text-lg font-medium text-white-800/90">
+        on Intel’s cutting
+      </span>{" "}
+      <span className="text-sm text-gray-500">
+        -edge technologies now drive Neubyte’s pioneering AI innovation
+      </span>
+    </span>
+  }
+/>
 
       <section className="pb-[120px] pt-[120px]">
         <div className="container">
@@ -26,7 +36,7 @@ const CEO = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="relative">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+                <div className="relative aspect-[1/1] overflow-hidden rounded-lg">
                   <Image
                     src="/images/blog/CEO.jpeg"
                     alt="CEO Ataur Sarkar"
@@ -57,13 +67,13 @@ const CEO = () => {
                   className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl"
                   variants={fadeInUp}
                 >
-                  Ataur Sarkar, PhD, <span className="text-2xl">PE (Professional Engineer)</span> 
+                  Ataur Sarkar, <span className="text-lg italic"> PhD, PE (Professional Engineer)</span> 
                 </motion.h2>
                 <motion.p
                   className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark"
                   variants={fadeInUp}
                 >
-                 Dr. Ataur Sarkar serves as the CEO and CRE (Chief Research Executive) of NeuByte, a Portland, Oregon-based startup pioneering AI agents, machine learning, and data analytics solutions.
+                 Dr. Ataur Sarkar serves as the CEO and CRE <span className="italic text-sm">(Chief Research Executive)</span> of NeuByte, a Portland, Oregon-based startup pioneering AI agents, machine learning, and data analytics solutions.
                 </motion.p>
                 <motion.div
                   className="mb-8"

@@ -25,7 +25,7 @@ export default function Home() {
       <Video />
       {/* <Brands /> */}
       <AboutSectionOne />
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <Pricing /> */}
       <Blog />
       <Contact />

@@ -48,7 +48,7 @@ const BlogDetailsPage = async ({ params }: PageProps) => {
                       </div>
                       <div className="w-full">
                         <span className="mb-1 text-base font-medium text-body-color">
-                          By <span>Md Ataur Sarkar</span>
+                          By <span> Dr. Ataur Sarkar, <span className="italic text-xs">PE</span> </span>
                         </span>
                       </div>
                     </div>
@@ -86,7 +86,7 @@ const BlogDetailsPage = async ({ params }: PageProps) => {
                   </div>
                 </div>
                 <div>
-                  <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+                  <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }} />
 
                   <div className="items-center justify-between sm:flex">
                     <div className="mb-5">

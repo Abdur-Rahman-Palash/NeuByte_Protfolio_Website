@@ -1,11 +1,12 @@
 import Link from "next/link";
+import React from "react";
 
 const Breadcrumb = ({
   pageName,
   description,
 }: {
   pageName: string;
-  description: string;
+  description: React.ReactNode;
 }) => {
   return (
     <>
