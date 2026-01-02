@@ -11,7 +11,7 @@ const CEO = () => {
     <>
       <Breadcrumb
         pageName="Meet Our CEO"
-        description="Learn about our visionary leader, Dr. Ataur Sarkar, whose years of experience on Intel’s cutting‑edge technologies now drive Neubyte’s pioneering AI innovation.'"
+        description="Learn about our visionary leader, Dr. Ataur Sarkar, whose years of experience on Intel&apos;s cutting‑edge technologies now drive Neubyte&apos;s pioneering AI innovation."
       />
 
       <section className="pb-[120px] pt-[120px]">
@@ -31,7 +31,7 @@ const CEO = () => {
                     src="/images/blog/CEO.jpeg"
                     alt="CEO Ataur Sarkar"
                     fill
-                    className="object-cover"
+                    className="object-center"
                   />
                 </div>
 
@@ -63,7 +63,7 @@ const CEO = () => {
                   className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark"
                   variants={fadeInUp}
                 >
-                 Dr. Ataur Sarkar serves as the CEO and CRE (Chief Research Executive) of NeuByte, a Portland, Oregon-based startup pioneering AI agents, machine learning, and data analytics solutions.'
+                 Dr. Ataur Sarkar serves as the CEO and CRE (Chief Research Executive) of NeuByte, a Portland, Oregon-based startup pioneering AI agents, machine learning, and data analytics solutions.
                 </motion.p>
                 <motion.div
                   className="mb-8"
