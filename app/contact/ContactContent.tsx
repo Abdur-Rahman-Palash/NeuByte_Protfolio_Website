@@ -24,8 +24,8 @@ const ContactContent = () => {
     setSubmitMessage("");
 
     try {
-      // Using Formspree for static hosting compatibility
-      const response = await fetch('https://formspree.io/f/xpznqgkq', {
+      // Using local API for server-side email handling
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +33,8 @@ const ContactContent = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+      if (response.ok && result.success) {
         setSubmitMessage("Message sent successfully! We'll get back to you soon.");
         setFormData({ name: "", email: "", message: "" });
       } else {
