@@ -6,7 +6,7 @@ const blogData: Blog[] = [
     title: "AI for Small Businesses: Simple Ways to Save Time, Cut Costs, and Grow Faster",
     image: "/images/blog/blog-01.jpg",
     tags: ["AI", "Automation"],
-    excerpt: "<p>AI is transforming small businesses by automating tasks, providing insights, and enabling growth without requiring deep technical expertise.</p>",
+    excerpt: "<p>Artifical Intelligence (AI) sounds complicated. For many people, it feels like something inly big tech companies and progrommers can use.....</p>",
     content: `<p><strong>Artificial Intelligence (AI)</strong> sounds complicated.</p>
 
 <p>For many people, it feels like something only big tech companies or programmers can use.</p>
@@ -113,7 +113,7 @@ Better results in growing revenue without doing everything manually.</p>
     title: "From Static Sites to Smart Systems: How AI-Native Web Development Is Changing Small Business Websites",
     image: "/images/blog/blog-02.jpg",
     tags: ["AI", "Web Development", "Small Business"],
-    excerpt: "<p>Explore how AI-native web development transforms static websites into intelligent business tools that adapt, personalize, and drive growth for small businesses.</p>",
+    excerpt: "<p>For a long time ,websites were simple. These websites showed your business name, list your services and had a contact form.....</p>",
     content: `<p>For a long time, websites were simple. These websites showed your business name, listed your services, and had a contact form at the bottom. Once a site was built, it mostly stayed the same.</p>
 
 <p>That type of website still exists today, but the way people interact with businesses has dramatically changed. Customers expect faster responses, personalized experiences, and smoother online journeys. A static website often cannot keep up with this demand.</p>
