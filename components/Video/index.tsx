@@ -76,13 +76,14 @@ const Video = () => {
               </svg>
             </button>
             <div className="aspect-video w-full">
-              <iframe
-                src="https://streamable.com/e/vkukcz"
+              <video
+                src="/NeuByte__Data_&_AI_Solutions (1).mp4"
                 title="NeuByte Video"
                 className="h-full w-full rounded-lg"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+                controls
+                autoPlay
+                muted
+              ></video>
             </div>
             <div className="mt-4 text-center">
               <button
