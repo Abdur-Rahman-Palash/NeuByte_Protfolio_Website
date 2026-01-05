@@ -58,13 +58,10 @@ const CEO = () => {
             >
               <div className="lg:pl-8">
                 <motion.h2
-                  className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl text-justify"
+                  className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl"
                   variants={fadeInUp}
                 >
-                  Ataur Sarkar,{" "}
-                  <span className="text-lg italic">
-                    PhD, PE (Professional Engineer)
-                  </span>
+                  Ataur Sarkar, <span className="text-lg italic">PhD,PE (Professional Engineer)</span>
                 </motion.h2>
 
                 <motion.p
