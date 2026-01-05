@@ -6,7 +6,7 @@ const blogData: Blog[] = [
     title: "AI for Small Businesses: Simple Ways to Save Time, Cut Costs, and Grow Faster",
     image: "/images/blog/blog-01.jpg",
     tags: ["AI", "Automation"],
-    excerpt: "<p>Artifical Intelligence (AI) sounds complicated. For many people, it feels like something inly big tech companies and progrommers can use.....</p>",
+    excerpt: "<p>Artificial Intelligence (AI) sounds complicated. For many people, it feels like something only big tech companies and programmers can use.....</p>",
     content: `<p><strong>Artificial Intelligence (AI)</strong> sounds complicated.</p>
 
 <p>For many people, it feels like something only big tech companies or programmers can use.</p>

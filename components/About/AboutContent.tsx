@@ -66,7 +66,7 @@ const AboutContent = () => {
                   About Us
                 </h2>
                 <p className="mb-6 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  Neubyte is a Portland-born technology company dedicated to transforming raw data into reliable decisions. Drawing on deep expertise in data analytics, AI agents, and machine learning, Neubyte helps organizations turn complex, fragmented information into clear, actionable insight that drives measurable business outcomes. From early-stage startups to established enterprises, the company focuses on building intelligent, scalable solutions that are as practical in the field as they are advanced in the lab
+                  Neubyte is a Portland-born technology company dedicated to transforming raw data into reliable decisions. Drawing on deep expertise in data analytics, AI agents, and machine learning, Neubyte helps organizations turn complex, fragmented information into clear, actionable insight that drives measurable business outcomes. From early-stage startups to established enterprises, the company focuses on building intelligent, scalable solutions that are as practical in the field as they are advanced in the lab.
                 </p>
               </motion.div>
 
