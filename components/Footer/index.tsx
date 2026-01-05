@@ -28,7 +28,7 @@ const Footer = () => {
                 <Image
                   src="/images/logo/NEUNYTE11.png"
                   alt="NeuByte Logo"
-                  width={100}   // 🔽 logo smaller
+                  width={100}   
                   height={28}
                   className="mx-auto"
                 />
@@ -115,7 +115,7 @@ const Footer = () => {
                 <p className="text-sm text-body-color dark:text-body-color-dark">
                         <a href="tel:+15034372165" className="hover:text-primary">1-503-437-2165</a>
                       </p>
-                 <p className="text-sm text-body-color dark:text-body-color-dark">18165 NW Corinthian St<br />
+                 <p className="text-sm text-body-color dark:text-body-color-dark">
                         Portland, Oregon 97229<br />
                         USA</p>
               </div>
