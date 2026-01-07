@@ -101,7 +101,7 @@ const CEO = () => {
                   </h3>
                   <ul className="list-disc list-outside pl-6 space-y-2 marker:mr-4 text-body-color dark:text-body-color-dark">
                     <li>
-                   Holds a PhD in Electrical Engineering from UC Davis, with MSc degrees from University of Calgary and BUET (ranked top two in class).
+                   Holds a PhD in Electrical Engineering from UC Davis, with MSc degrees from University of Calgary and BUET (ranked top two in BSc).
                     </li>
                     <li>
                      Published research work across disciplines in software development, nanophotonics, VLSI design, and optical communications.
