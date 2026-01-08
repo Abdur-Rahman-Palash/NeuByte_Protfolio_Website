@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggler from "./ThemeToggler";
+import { useTheme } from "next-themes";
 import menuData from "./menuData";
 
 const Header = () => {
@@ -42,6 +43,8 @@ const Header = () => {
   };
 
   const usePathName = usePathname();
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/images/logo/darkmode.png" : "/images/logo/lightmode.png";
 
   return (
     <>
@@ -63,7 +66,7 @@ const Header = () => {
               >
                 <div className=" flex justify-center items-center mx-auto">
                   <Image
-                    src="/images/logo/NEUNYTE11.png"
+                    src={logoSrc}
                     alt="NeuByte Logo"
                     width={140}
                     height={30}
@@ -81,12 +84,12 @@ const Header = () => {
                 >
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[7px] rotate-45" : " "
+                      navbarOpen ? " top-[7px] rotate-45" : ""
                     }`}
                   />
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "opacity-0 " : " "
+                      navbarOpen ? "opacity-0" : ""
                     }`}
                   />
                   <span
@@ -118,10 +121,10 @@ const Header = () => {
                                   href={menuItem.path}
                                   onClick={() => setNavbarOpen(false)}
                                   className={`relative group flex py-3 px-6 rounded-xl text-base transition-all duration-300 ${
-                                    usePathName === menuItem.path && menuItem.path !== "/home"
-                                      ? "text-primary dark:text-white bg-primary/10"
-                                      : "text-dark hover:text-white hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
-                                  }` }
+                                      usePathName === menuItem.path && menuItem.path !== "/home"
+                                        ? "text-primary dark:text-white bg-primary/10"
+                                        : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
+                                    }` }
                                 >
                                   <span className="transition-all group-hover:font-bold">{menuItem.title}</span>
                                   <span className="absolute left-6 right-6 bottom-3 h-0.5 bg-primary rounded-full transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -131,7 +134,7 @@ const Header = () => {
                               <>
                                 <p
                                   onClick={() => handleSubmenu(index)}
-                                  className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-white group-hover:shadow-md dark:text-white/70 dark:group-hover:text-white dark:group-hover:shadow-lg"
+                                  className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-primary group-hover:shadow-md dark:text-white/70 dark:group-hover:text-white dark:group-hover:shadow-lg"
                                 >
                                   {menuItem.title}
                                   <span className="pl-3">
@@ -155,7 +158,7 @@ const Header = () => {
                                       key={index}
                                       href={submenuItem.path}
                                       onClick={() => setNavbarOpen(false)}
-                                      className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-white hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg lg:px-3"
+                                      className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg lg:px-3"
                                     >
                                       {submenuItem.title}
                                     </Link>
@@ -182,7 +185,7 @@ const Header = () => {
                             className={`relative group flex py-3 px-5 rounded-xl text-base transition-all duration-300 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none ${
                               usePathName === menuItem.path && menuItem.path !== "/home"
                                 ? "text-primary dark:text-white bg-primary/10"
-                                : "text-dark hover:text-white hover:shadow-md hover:px-5 hover:py-3 hover:rounded-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
+                                : "text-dark hover:text-primary hover:shadow-md hover:px-5 hover:py-3 hover:rounded-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                             }`}
                           >
                             <span className="transition-all group-hover:font-bold">{menuItem.title}</span>
@@ -192,7 +195,7 @@ const Header = () => {
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-white group-hover:shadow-md group-hover:px-5 group-hover:py-3 group-hover:rounded-md dark:text-white/70 dark:group-hover:text_white dark:group-hover:shadow-lg lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none"
+                              className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-primary group-hover:shadow-md group-hover:px-5 group-hover:py-3 group-hover:rounded-md dark:text-white/70 dark:group-hover:text-white dark:group-hover:shadow-lg lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none"
                             >
                               {menuItem.title}
                               <span className="pl-3">
@@ -220,7 +223,7 @@ const Header = () => {
                                 >
                                   <Link
                                     href={submenuItem.path}
-                                    className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-white hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg lg:px-3"
+                                    className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg lg:px-3"
                                   >
                                     {submenuItem.title}
                                   </Link>

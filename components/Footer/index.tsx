@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
+import { useTheme } from "next-themes";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/images/logo/darkmode.png" : "/images/logo/lightmode.png";
 
   return (
     <footer className="bg-white pt-12 dark:bg-gray-dark md:pt-16 lg:pt-20">
@@ -26,9 +29,9 @@ const Footer = () => {
               {/* Logo */}
               <Link href="/home" className="inline-block">
                 <Image
-                  src="/images/logo/NEUNYTE11.png"
+                  src={logoSrc}
                   alt="NeuByte Logo"
-                  width={100}   
+                  width={100}
                   height={28}
                   className="mx-auto"
                 />
