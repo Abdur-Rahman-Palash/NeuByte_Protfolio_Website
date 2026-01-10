@@ -51,7 +51,7 @@ const Header = () => {
       <header
         className={`header left-0 top-0 z-40 flex w-full items-center ${
           sticky
-            ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999] bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
+            ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999] bg-white !bg-opacity-100 shadow-sticky backdrop-blur-sm transition"
             : "absolute bg-transparent"
         }`}
       >
@@ -106,12 +106,13 @@ const Header = () => {
                       exit={{ x: "100%" }}
                       transition={{ duration: 0.3 }}
                       id="navbarCollapse"
-                      className="navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 dark:border-body-color/20 dark:bg-dark lg:hidden"
+                      className="navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white !bg-opacity-100 px-6 py-4 dark:border-body-color/20 dark:bg-dark lg:hidden"
                     >
                       <ul className="block">
                         {menuData.map((menuItem, index) => (
                           <li key={index} className="group relative">
                             {menuItem.path ? (
+                              /* MOBILE MENU LINK (removed hover padding & fixed font weight) */
                               <motion.div
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
@@ -126,8 +127,14 @@ const Header = () => {
                                         : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                                     }` }
                                 >
-                                  <span className="transition-all group-hover:font-bold">{menuItem.title}</span>
-                                  <span className="absolute left-6 right-6 bottom-3 h-0.5 bg-primary rounded-full transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+                                  <span className="transition-all font-medium">{menuItem.title}</span>
+                                  <span
+                                    className={`absolute left-6 right-6 bottom-3 h-0.5 bg-primary rounded-full transform origin-left transition-transform duration-300 ${
+                                      usePathName === menuItem.path && menuItem.path !== "/home"
+                                        ? "scale-x-100"
+                                        : "scale-x-0 group-hover:scale-x-100"
+                                    }`}
+                                  />
                                 </Link>
                               </motion.div>
                             ) : (
@@ -149,7 +156,7 @@ const Header = () => {
                                   </span>
                                 </p>
                                 <div
-                                  className={`submenu relative left-0 top-full rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                                  className={`submenu relative left-0 top-full rounded-sm bg-white !bg-opacity-100 transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
                                     openIndex === index ? "block" : "hidden"
                                   }`}
                                 >
@@ -185,17 +192,23 @@ const Header = () => {
                             className={`relative group flex py-3 px-5 rounded-xl text-base transition-all duration-300 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none ${
                               usePathName === menuItem.path && menuItem.path !== "/home"
                                 ? "text-primary dark:text-white bg-primary/10"
-                                : "text-dark hover:text-primary hover:shadow-md hover:px-5 hover:py-3 hover:rounded-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
+                                : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                             }`}
                           >
-                            <span className="transition-all group-hover:font-bold">{menuItem.title}</span>
-                            <span className="absolute bottom-0 left-0 h-0.5 bg-primary rounded-full w-full transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+                            <span className="transition-all font-medium">{menuItem.title}</span>
+                            <span
+                              className={`absolute bottom-0 left-0 h-0.5 bg-primary rounded-full w-full transform origin-left transition-transform duration-300 ${
+                                usePathName === menuItem.path && menuItem.path !== "/home"
+                                  ? "scale-x-100"
+                                  : "scale-x-0 group-hover:scale-x-100"
+                              }`}
+                            />
                           </Link>
                         ) : (
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-primary group-hover:shadow-md group-hover:px-5 group-hover:py-3 group-hover:rounded-md dark:text-white/70 dark:group-hover:text-white dark:group-hover:shadow-lg lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none"
+                              className="flex cursor-pointer items-center justify-between py-3 px-5 rounded-xl text-base transition-all duration-300 text-dark group-hover:text-primary group-hover:shadow-md dark:text-white/70 dark:group-hover:text-white dark:group-hover:shadow-lg"
                             >
                               {menuItem.title}
                               <span className="pl-3">
@@ -210,24 +223,19 @@ const Header = () => {
                               </span>
                             </p>
                             <div
-                              className={`submenu relative left-0 top-full rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                              className={`submenu relative left-0 top-full rounded-sm bg-white !bg-opacity-100 transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
                               {menuItem.submenu.map((submenuItem, index) => (
-                                <motion.div
+                                <Link
                                   key={index}
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.95 }}
-                                  transition={{ duration: 0.2 }}
+                                  href={submenuItem.path}
+                                  onClick={() => setNavbarOpen(false)}
+                                  className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg lg:px-3"
                                 >
-                                  <Link
-                                    href={submenuItem.path}
-                                    className="block rounded-xl py-3 px-5 text-sm text-dark transition-all duration-300 hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg lg:px-3"
-                                  >
-                                    {submenuItem.title}
-                                  </Link>
-                                </motion.div>
+                                  {submenuItem.title}
+                                </Link>
                               ))}
                             </div>
                           </>
@@ -237,8 +245,8 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <div>
+              <div className="hidden items-center lg:flex">
+                <div className="flex items-center space-x-4">
                   <ThemeToggler />
                 </div>
               </div>
