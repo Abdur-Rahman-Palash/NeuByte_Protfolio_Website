@@ -61,7 +61,15 @@ const CEO = () => {
                   className="mb-6 text-3xl font-bold text-black dark:text-white sm:text-4xl"
                   variants={fadeInUp}
                 >
-                  Ataur Sarkar, <span className="text-lg italic">PhD,PE (Professional Engineer)</span>
+      <div className="">
+  Ataur Sarkar
+  <span className="italic text-sm text-white-600">
+    , PhD, PE <span className="italic">(Professional Engineer)</span>
+  </span>
+</div>
+
+
+                
                 </motion.h2>
 
                 <motion.p

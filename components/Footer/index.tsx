@@ -31,7 +31,7 @@ const Footer = () => {
                 <Image
                   src={logoSrc}
                   alt="NeuByte Logo"
-                  width={100}
+                  width={90}
                   height={28}
                   className="mx-auto"
                 />

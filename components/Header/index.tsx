@@ -68,7 +68,7 @@ const Header = () => {
                   <Image
                     src={logoSrc}
                     alt="NeuByte Logo"
-                    width={140}
+                    width={90}
                     height={30}
                   />
                 </div>
