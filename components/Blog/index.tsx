@@ -1,8 +1,10 @@
 import SectionTitle from "../Common/SectionTitle";
 import SingleBlog from "./SingleBlog";
-import blogData from "./blogData";
+import { getAllPosts } from "@/lib/markdown";
 
 const Blog = () => {
+  // Get blog data at server-side
+  const blogData = getAllPosts();
   return (
     <section
       id="blog"

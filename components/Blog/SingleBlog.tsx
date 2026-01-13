@@ -20,7 +20,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         whileHover={{ y: -10 }}
       >
         <Link
-          href={`/blog-details/${blog.id}`}
+          href={`/blog-details/${blog.slug}/`}
           className="relative block aspect-[37/22] w-full overflow-hidden"
         >
           <motion.span
@@ -36,18 +36,24 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <Image src={image} alt="image" fill className="object-cover" />
+            <Image src={image} alt={title} fill className="object-cover" />
           </motion.div>
         </Link>
         <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <h3>
             <Link
-              href={`/blog-details/${blog.id}`}
+              href={`/blog-details/${blog.slug}/`}
               className="mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
             >
               {title}
             </Link>
           </h3>
+          {blog.publishDate && (
+            <p className="mb-2 text-xs font-medium text-body-color dark:text-body-color-dark">
+              {new Date(blog.publishDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+              {blog.author?.name && <span className="ml-2">by {blog.author.name}</span>}
+            </p>
+          )}
           <p className="mb-4 text-base text-body-color dark:text-body-color-dark">
             <span dangerouslySetInnerHTML={{ __html: excerpt }} />
           </p>

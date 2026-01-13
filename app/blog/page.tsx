@@ -1,16 +1,35 @@
 import SingleBlog from "@/components/Blog/SingleBlog";
-import blogData from "@/components/Blog/blogData";
+import { getAllPosts } from "@/lib/markdown";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Page | NeuByte",
-  description: "",
-  // other metadata
+  title: "Blog - AI & Web Development Insights",
+  description: "Explore our latest articles on Artificial Intelligence, Machine Learning, Web Development, and how they can help small businesses grow.",
+  alternates: {
+    canonical: "https://neubyte.co/blog",
+  },
+  openGraph: {
+    title: "Blog - AI & Web Development Insights",
+    description: "Explore our latest articles on Artificial Intelligence, Machine Learning, Web Development, and how they can help small businesses grow.",
+    url: "https://neubyte.co/blog",
+    siteName: "NeuByte",
+    images: [
+      {
+        url: "/images/blog/blog-01.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NeuByte Blog",
+      },
+    ],
+    type: "website",
+  },
 };
 
 const Blog = () => {
+  const blogData = getAllPosts();
+
   return (
     <>
       <Breadcrumb
