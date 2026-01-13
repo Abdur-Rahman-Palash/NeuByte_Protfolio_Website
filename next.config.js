@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Hostinger hosting optimizations (without static export for API support)
+  // Hostinger hosting optimizations (server-side rendering)
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   
@@ -22,12 +22,6 @@ const nextConfig = {
       },
     ],
   },
-  
-  // Base path for subdirectory hosting (if needed)
-  // basePath: '',
-  
-  // Asset prefix for CDN (if needed)
-  // assetPrefix: '',
   
   // Custom webpack config
   webpack: (config, { isServer }) => {

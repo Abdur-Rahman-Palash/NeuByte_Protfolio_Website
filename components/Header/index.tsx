@@ -123,7 +123,9 @@ const Header = () => {
                                   onClick={() => setNavbarOpen(false)}
                                   className={`relative group flex py-3 px-6 rounded-xl text-base transition-all duration-300 ${
                                       usePathName === menuItem.path
-                                        ? "text-primary dark:text-white bg-primary/10"
+                                        ? (menuItem.path === "/" || menuItem.path === "/home") 
+                                          ? "text-primary dark:text-white"
+                                          : "text-primary dark:text-white bg-primary/10"
                                         : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                                     }` }
                                 >
@@ -191,7 +193,9 @@ const Header = () => {
                             href={menuItem.path}
                             className={`relative group flex py-3 px-5 rounded-xl text-base transition-all duration-300 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none ${
                               usePathName === menuItem.path
-                                ? "text-primary dark:text-white bg-primary/10"
+                                ? (menuItem.path === "/" || menuItem.path === "/home") 
+                                  ? "text-primary dark:text-white"
+                                  : "text-primary dark:text-white bg-primary/10"
                                 : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                             }`}
                           >
