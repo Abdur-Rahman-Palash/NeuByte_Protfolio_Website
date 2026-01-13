@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
-// IMPORTANT: Static export is DISABLED for development
-// Only enable it when building for production static hosting
-const isStaticBuild = process.env.STATIC_BUILD === 'true';
-
 const nextConfig = {
-  // Disable static export for development (API routes need to work)
-  // Only enable for production static builds
-  ...(isStaticBuild ? { output: "export" } : {}),
+  // Hostinger hosting optimizations (without static export for API support)
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
+  
+  // Image optimization for Hostinger
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -15,9 +12,23 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+      {
+        protocol: "https",
+        hostname: "neubyte.tech",
+      },
+      {
+        protocol: "https",
+        hostname: "*.neubyte.tech",
+      },
     ],
   },
-  skipTrailingSlashRedirect: true,
+  
+  // Base path for subdirectory hosting (if needed)
+  // basePath: '',
+  
+  // Asset prefix for CDN (if needed)
+  // assetPrefix: '',
+  
   // Custom webpack config
   webpack: (config, { isServer }) => {
     // Client-side: exclude Node.js modules
@@ -31,15 +42,29 @@ const nextConfig = {
     }
     return config;
   },
+  
+  // Security headers for production
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+    ];
+  },
 };
-
-// Log the configuration (only in build time, not in dev)
-if (typeof window === 'undefined' && process.env.NODE_ENV !== 'test') {
-  if (isStaticBuild) {
-    console.log('⚠️ Static export ENABLED - API routes will be excluded');
-  } else {
-    console.log('✅ Static export DISABLED - API routes will work');
-  }
-}
 
 module.exports = nextConfig;

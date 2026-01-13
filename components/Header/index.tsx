@@ -122,7 +122,7 @@ const Header = () => {
                                   href={menuItem.path}
                                   onClick={() => setNavbarOpen(false)}
                                   className={`relative group flex py-3 px-6 rounded-xl text-base transition-all duration-300 ${
-                                      usePathName === menuItem.path && menuItem.path !== "/home"
+                                      usePathName === menuItem.path
                                         ? "text-primary dark:text-white bg-primary/10"
                                         : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                                     }` }
@@ -130,7 +130,7 @@ const Header = () => {
                                   <span className="transition-all font-medium">{menuItem.title}</span>
                                   <span
                                     className={`absolute left-6 right-6 bottom-3 h-0.5 bg-primary rounded-full transform origin-left transition-transform duration-300 ${
-                                      usePathName === menuItem.path && menuItem.path !== "/home"
+                                      usePathName === menuItem.path && menuItem.path !== "/" && menuItem.path !== "/home"
                                         ? "scale-x-100"
                                         : "scale-x-0 group-hover:scale-x-100"
                                     }`}
@@ -190,7 +190,7 @@ const Header = () => {
                           <Link
                             href={menuItem.path}
                             className={`relative group flex py-3 px-5 rounded-xl text-base transition-all duration-300 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:rounded-none ${
-                              usePathName === menuItem.path && menuItem.path !== "/home"
+                              usePathName === menuItem.path
                                 ? "text-primary dark:text-white bg-primary/10"
                                 : "text-dark hover:text-primary hover:shadow-md dark:text-white/70 dark:hover:text-white dark:hover:shadow-lg"
                             }`}
@@ -198,7 +198,7 @@ const Header = () => {
                             <span className="transition-all font-medium">{menuItem.title}</span>
                             <span
                               className={`absolute bottom-0 left-0 h-0.5 bg-primary rounded-full w-full transform origin-left transition-transform duration-300 ${
-                                usePathName === menuItem.path && menuItem.path !== "/home"
+                                usePathName === menuItem.path && menuItem.path !== "/" && menuItem.path !== "/home"
                                   ? "scale-x-100"
                                   : "scale-x-0 group-hover:scale-x-100"
                               }`}

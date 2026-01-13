@@ -34,6 +34,10 @@ export default function AdminPage() {
     authorDesignation: '',
     content: '',
   });
+  const [uploadingCover, setUploadingCover] = useState(false);
+  const [uploadingAuthor, setUploadingAuthor] = useState(false);
+  const [coverPreview, setCoverPreview] = useState('');
+  const [authorPreview, setAuthorPreview] = useState('');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -96,6 +100,44 @@ export default function AdminPage() {
     window.location.href = '/admin/index.html';
   };
 
+  const handleImageUpload = async (file: File, type: 'cover' | 'author') => {
+    if (!file) return;
+
+    const setUploading = type === 'cover' ? setUploadingCover : setUploadingAuthor;
+    setUploading(true);
+
+    try {
+      const formDataUpload = new FormData();
+      formDataUpload.append('file', file);
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formDataUpload,
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.url) {
+        if (type === 'cover') {
+          setFormData((prev) => ({ ...prev, coverImage: result.url }));
+          setCoverPreview(result.url);
+        } else {
+          setFormData((prev) => ({ ...prev, authorImage: result.url }));
+          setAuthorPreview(result.url);
+        }
+        alert('✅ Image uploaded successfully!');
+      } else {
+        alert(`❌ Upload failed: ${result.error || 'Unknown error'}`);
+      }
+    } catch (error: any) {
+      console.error('Upload error:', error);
+      alert(`❌ Error uploading image: ${error.message}`);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -178,6 +220,8 @@ export default function AdminPage() {
         content: post.content || '',
       });
       
+      setCoverPreview(post.coverImage || '');
+      setAuthorPreview(post.author?.image || '');
       setEditingPost(post);
       setShowForm(true);
     } catch (error) {
@@ -220,6 +264,8 @@ export default function AdminPage() {
       authorDesignation: '',
       content: '',
     });
+    setCoverPreview('');
+    setAuthorPreview('');
     setEditingPost(null);
     setShowForm(false);
   };
@@ -273,6 +319,40 @@ export default function AdminPage() {
           <p style={{ margin: '5px 0 0 0', opacity: 0.9 }}>Content Management System</p>
         </div>
         <div>
+          <a
+            href="/admin/projects"
+            style={{
+              background: 'white',
+              color: '#667eea',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              marginRight: '10px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
+            🚀 Projects
+          </a>
+          <a
+            href="/admin/blog"
+            style={{
+              background: 'white',
+              color: '#667eea',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              marginRight: '10px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
+            📝 Blog
+          </a>
           <button
             onClick={() => setShowForm(!showForm)}
             style={{
@@ -378,21 +458,67 @@ export default function AdminPage() {
 
               <div style={{ marginBottom: '20px' }}>
                 <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#555' }}>
-                  Cover Image URL
+                  Cover Image
                 </label>
-                <input
-                  type="text"
-                  value={formData.coverImage}
-                  onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
-                  placeholder="/images/blog/blog-01.jpg"
-                  style={{
-                    width: '100%',
-                    padding: '10px',
-                    border: '1px solid #ddd',
-                    borderRadius: '6px',
-                    fontSize: '14px'
-                  }}
-                />
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                  <div style={{ flex: 1 }}>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          handleImageUpload(file, 'cover');
+                        }
+                      }}
+                      disabled={uploadingCover}
+                      style={{
+                        width: '100%',
+                        padding: '10px',
+                        border: '1px solid #ddd',
+                        borderRadius: '6px',
+                        fontSize: '14px',
+                        marginBottom: '10px'
+                      }}
+                    />
+                    <input
+                      type="text"
+                      value={formData.coverImage}
+                      onChange={(e) => {
+                        setFormData({ ...formData, coverImage: e.target.value });
+                        setCoverPreview(e.target.value);
+                      }}
+                      placeholder="/images/blog/blog-01.jpg"
+                      style={{
+                        width: '100%',
+                        padding: '10px',
+                        border: '1px solid #ddd',
+                        borderRadius: '6px',
+                        fontSize: '14px'
+                      }}
+                    />
+                    <p style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
+                      Upload an image or enter image URL
+                    </p>
+                  </div>
+                  {(coverPreview || formData.coverImage) && (
+                    <div style={{ width: '150px', height: '100px', border: '1px solid #ddd', borderRadius: '6px', overflow: 'hidden', flexShrink: 0 }}>
+                      <img
+                        src={coverPreview || formData.coverImage}
+                        alt="Cover preview"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+                {uploadingCover && (
+                  <p style={{ fontSize: '12px', color: '#667eea', marginTop: '5px' }}>
+                    ⏳ Uploading...
+                  </p>
+                )}
               </div>
 
               <div style={{ marginBottom: '20px' }}>
@@ -434,12 +560,34 @@ export default function AdminPage() {
                 </div>
                 <div>
                   <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#555' }}>
-                    Author Image URL
+                    Author Image
                   </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        handleImageUpload(file, 'author');
+                      }
+                    }}
+                    disabled={uploadingAuthor}
+                    style={{
+                      width: '100%',
+                      padding: '10px',
+                      border: '1px solid #ddd',
+                      borderRadius: '6px',
+                      fontSize: '14px',
+                      marginBottom: '10px'
+                    }}
+                  />
                   <input
                     type="text"
                     value={formData.authorImage}
-                    onChange={(e) => setFormData({ ...formData, authorImage: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, authorImage: e.target.value });
+                      setAuthorPreview(e.target.value);
+                    }}
                     placeholder="/images/blog/CEO.jpeg"
                     style={{
                       width: '100%',
@@ -449,6 +597,23 @@ export default function AdminPage() {
                       fontSize: '14px'
                     }}
                   />
+                  {uploadingAuthor && (
+                    <p style={{ fontSize: '12px', color: '#667eea', marginTop: '5px' }}>
+                      ⏳ Uploading...
+                    </p>
+                  )}
+                  {(authorPreview || formData.authorImage) && (
+                    <div style={{ marginTop: '10px', width: '60px', height: '60px', border: '1px solid #ddd', borderRadius: '50%', overflow: 'hidden' }}>
+                      <img
+                        src={authorPreview || formData.authorImage}
+                        alt="Author preview"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div>
                   <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#555' }}>

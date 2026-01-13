@@ -1,146 +1,149 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 
-const postsDirectory = path.join(process.cwd(), 'markdown/blogs');
+const postsDirectory = path.join(process.cwd(), 'markdown', 'blogs');
 
-// GET - Fetch all blog posts
 export async function GET() {
   try {
-    // Check if directory exists
-    if (!fs.existsSync(postsDirectory)) {
-      console.log('Posts directory does not exist, returning empty array');
-      return NextResponse.json({ posts: [] });
-    }
-
-    const files = fs.readdirSync(postsDirectory);
-    const mdFiles = files.filter((file) => file.endsWith('.md'));
+    // Read all markdown files from the blogs directory
+    const slugs = fs.readdirSync(postsDirectory);
     
-    if (mdFiles.length === 0) {
-      return NextResponse.json({ posts: [] });
-    }
+    const posts = slugs.map((slug) => {
+      const fullPath = path.join(postsDirectory, slug);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data, content } = require('gray-matter')(fileContents);
+      
+      return {
+        slug: slug.replace('.md', ''),
+        title: data.title,
+        date: data.date,
+        excerpt: data.excerpt,
+        coverImage: data.coverImage || '',
+        tags: data.tags || [],
+        author: data.author || null,
+        content: content.trim()
+      };
+    });
 
-    const posts = mdFiles
-      .map((file) => {
-        try {
-          const filePath = path.join(postsDirectory, file);
-          if (!fs.existsSync(filePath)) {
-            console.warn(`File not found: ${filePath}`);
-            return null;
-          }
-          const fileContents = fs.readFileSync(filePath, 'utf8');
-          if (!fileContents || fileContents.trim().length === 0) {
-            console.warn(`Empty file: ${file}`);
-            return null;
-          }
-          const { data } = matter(fileContents);
-          return {
-            slug: file.replace(/\.md$/, ''),
-            title: data.title || '',
-            date: data.date || '',
-            excerpt: data.excerpt || '',
-            coverImage: data.coverImage || '',
-            tags: Array.isArray(data.tags) ? data.tags : [],
-            author: data.author || null,
-          };
-        } catch (fileError: any) {
-          console.error(`Error processing file ${file}:`, fileError?.message || fileError);
-          return null;
-        }
-      })
-      .filter((post): post is NonNullable<typeof post> => post !== null)
-      .sort((a, b) => {
-        const dateA = a.date || '';
-        const dateB = b.date || '';
-        return dateB.localeCompare(dateA);
-      });
-
-    return NextResponse.json({ posts });
-  } catch (error: any) {
-    console.error('Error fetching blogs:', error);
+    return NextResponse.json(posts);
+  } catch (error) {
+    console.error('Error reading blog posts:', error);
     return NextResponse.json(
-      { 
-        error: 'Failed to fetch blogs',
-        message: error?.message || 'Unknown error'
-      },
+      { error: 'Failed to fetch blog posts' },
       { status: 500 }
     );
   }
 }
 
-// POST - Create a new blog post
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const {
-      title,
-      date,
-      excerpt,
-      coverImage,
-      tags,
-      author,
-      content,
-    } = body;
-
-    if (!title || !content) {
-      return NextResponse.json(
-        { error: 'Title and content are required' },
-        { status: 400 }
-      );
-    }
-
-    // Create slug from title
-    const slug = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
-
-    // Check if file already exists
-    const filePath = path.join(postsDirectory, `${slug}.md`);
-    if (fs.existsSync(filePath)) {
-      return NextResponse.json(
-        { error: 'A blog post with this title already exists' },
-        { status: 400 }
-      );
-    }
-
+    const body = await request.json();
+    const { slug, title, date, excerpt, coverImage, tags, author, content } = body;
+    
     // Create frontmatter
     const frontmatter = `---
-title: "${title.replace(/"/g, '\\"')}"
-date: "${date || new Date().toISOString().split('T')[0]}"
-excerpt: "${(excerpt || '').replace(/"/g, '\\"')}"
-coverImage: "${coverImage || ''}"
-tags: ${JSON.stringify(tags || [])}
+title: ${title}
+date: ${date}
+excerpt: ${excerpt}
+coverImage: ${coverImage}
+tags: [${tags.join(', ')}]
 author:
-  name: "${(author?.name || '').replace(/"/g, '\\"')}"
-  image: "${author?.image || ''}"
-  designation: "${(author?.designation || '').replace(/"/g, '\\"')}"
+  name: ${author.name}
+  image: ${author.image}
+  designation: ${author.designation}
 ---
 
-${content || ''}`;
+${content}
+`;
 
-    // Ensure directory exists
-    if (!fs.existsSync(postsDirectory)) {
-      fs.mkdirSync(postsDirectory, { recursive: true });
-    }
-
-    // Write file
-    fs.writeFileSync(filePath, frontmatter, 'utf8');
-
-    return NextResponse.json({
-      success: true,
-      slug,
+    // Create filename from slug
+    const filename = `${slug}.md`;
+    const fullPath = path.join(postsDirectory, filename);
+    
+    fs.writeFileSync(fullPath, frontmatter, 'utf8');
+    
+    return NextResponse.json({ 
       message: 'Blog post created successfully',
+      slug: slug 
     });
-  } catch (error: any) {
-    console.error('Error creating blog:', error);
+  } catch (error) {
+    console.error('Error creating blog post:', error);
     return NextResponse.json(
-      { 
-        error: 'Failed to create blog post',
-        message: error?.message || 'Unknown error',
-        details: error?.stack
-      },
+      { error: 'Failed to create blog post' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(request: Request) {
+  try {
+    const body = await request.json();
+    const { slug, title, date, excerpt, coverImage, tags, author, content } = body;
+    
+    // Create frontmatter
+    const frontmatter = `---
+title: ${title}
+date: ${date}
+excerpt: ${excerpt}
+coverImage: ${coverImage}
+tags: [${tags.join(', ')}]
+author:
+  name: ${author.name}
+  image: ${author.image}
+  designation: ${author.designation}
+---
+
+${content}
+`;
+
+    // Create filename from slug
+    const filename = `${slug}.md`;
+    const fullPath = path.join(postsDirectory, filename);
+    
+    fs.writeFileSync(fullPath, frontmatter, 'utf8');
+    
+    return NextResponse.json({ 
+      message: 'Blog post updated successfully',
+      slug: slug 
+    });
+  } catch (error) {
+    console.error('Error updating blog post:', error);
+    return NextResponse.json(
+      { error: 'Failed to update blog post' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const slug = searchParams.get('id');
+    
+    if (!slug) {
+      return NextResponse.json(
+        { error: 'Blog post slug is required' },
+        { status: 400 }
+      );
+    }
+    
+    const filename = `${slug}.md`;
+    const fullPath = path.join(postsDirectory, filename);
+    
+    // Delete the file
+    if (fs.existsSync(fullPath)) {
+      fs.unlinkSync(fullPath);
+    }
+    
+    return NextResponse.json({ 
+      message: 'Blog post deleted successfully',
+      slug: slug 
+    });
+  } catch (error) {
+    console.error('Error deleting blog post:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete blog post' },
       { status: 500 }
     );
   }
