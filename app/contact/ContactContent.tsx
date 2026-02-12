@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
@@ -24,8 +24,8 @@ const ContactContent = () => {
     setSubmitMessage("");
 
     try {
-      // Using local API for server-side email handling
-      const response = await fetch('/api/contact', {
+      // Use PHP backend for static export
+      const response = await fetch('/contact.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const ContactContent = () => {
         setSubmitMessage("Failed to send message. Please try again.");
       }
     } catch (error) {
-      setSubmitMessage("Network error. Please try again.");
+      setSubmitMessage("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
     }

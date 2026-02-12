@@ -8,7 +8,7 @@ import LayoutContent from "@/components/LayoutContent";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://neubyte.co"),
+  metadataBase: new URL("https://neubyte.tech"),
   title: {
     template: "%s | NeuByte",
     default: "NeuByte | Future with AI",

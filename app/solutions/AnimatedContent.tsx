@@ -6,16 +6,79 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const AnimatedContent = () => {
-  const [showProjects, setShowProjects] = useState(false);
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [content, setContent] = useState({
     title: "Our Solutions",
     subtitle: "Web Development Excellence",
     description: "Crafting modern, responsive web applications with cutting-edge technologies and AI integration.",
-    buttonText: "See Our Projects",
-    showProjects: true // Default to true for better UX
   });
+
+  // Static project data with 8 cards
+  const projects = [
+    {
+      id: 1,
+      title: "E-Commerce Platform",
+      description: "A full-featured online shopping platform with payment integration, user authentication, and admin dashboard.",
+      image: "/images/ecommerce.png",
+      demoLink: "https://ecommerce-six-fawn.vercel.app/",
+      techStack: ["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 2,
+      title: "Trip Planning App",
+      description: "Collaborative trip planning tool with real-time updates, itinerary management, and travel booking features.",
+      image: "/images/neutrip.png",
+      demoLink: "https://neutrip.vercel.app/",
+      techStack: ["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 3,
+      title: "MAF Platform",
+      description: "Modern application framework with advanced features, user management, and seamless integration capabilities.",
+      image: "/images/MAF.png",
+      demoLink: "https://maf-wqvi.vercel.app/",
+      techStack:["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 4,
+      title: "Job Scanner",
+      description: "AI-powered job application tracking system with resume analysis, job matching, and career insights.",
+      image: "/images/job.png",
+      demoLink: "https://neujobscan.netlify.app/",
+      techStack: ["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 5,
+      title: "Real Estate Portal",
+      description: "Property listing and management platform with advanced search filters, virtual tours, and agent connections.",
+      image: "/images/real.png",
+      demoLink: "https://real-state-zdg1.vercel.app/",
+      techStack: ["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 6,
+      title: "E-Learning Platform",
+      description: "Educational platform with course creation, student progress tracking, and interactive learning modules.",
+      image: "/images/elearn.png",
+      demoLink: "https://elearn-ww.vercel.app/",
+      techStack: ["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 7,
+      title: "Medical Dashboard",
+      description: "Healthcare management system with appointment scheduling, patient records, and telemedicine capabilities.",
+      image: "/images/one.png",
+      demoLink: "https://one-medical-doctor.vercel.app/",
+      techStack:["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    },
+    {
+      id: 8,
+      title: "Business Health Dashboard",
+      description: "Comprehensive business analytics dashboard with real-time metrics, reporting, and data visualization.",
+      image: "/images/bsd.png",
+      demoLink: "https://business-health-dashboard-ajjo.vercel.app/",
+      techStack:["React", "GSAP Animation", "Next.js", "TypeScript" ,"Tailwind CSS"]
+    }
+  ];
 
   // Load content from API
   useEffect(() => {
@@ -25,10 +88,6 @@ const AnimatedContent = () => {
         if (response.ok) {
           const data = await response.json();
           setContent(data);
-          // Only show projects button if enabled in admin
-          if (!data.showProjects) {
-            setShowProjects(false);
-          }
         }
       } catch (error) {
         console.error('Error loading content:', error);
@@ -37,48 +96,6 @@ const AnimatedContent = () => {
     
     loadContent();
   }, []);
-
-  const loadProjects = async () => {
-    if (projects.length > 0) return projects; // Already loaded
-    
-    console.log('🚀 Loading projects...');
-    setLoading(true);
-    try {
-      const response = await fetch('/api/projects');
-      console.log('📡 API Response status:', response.status);
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('📦 Projects loaded:', data.length, 'projects');
-        setProjects(data);
-        return data;
-      } else {
-        console.error('❌ API Response not ok:', response.status, response.statusText);
-        return [];
-      }
-    } catch (error) {
-      console.error('❌ Error loading projects:', error);
-      return [];
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleToggleProjects = () => {
-    console.log('🔘 Button clicked, current showProjects:', showProjects);
-    console.log('🔘 Projects length:', projects.length);
-    
-    if (!showProjects) {
-      console.log('📋 Loading projects...');
-      loadProjects().then(() => {
-        console.log('✅ Projects loaded, setting showProjects to true');
-        setShowProjects(true);
-      });
-    } else {
-      console.log('🙈 Hiding projects...');
-      setShowProjects(false);
-    }
-  };
 
   return (
     <>
@@ -101,84 +118,70 @@ const AnimatedContent = () => {
           <p className="mb-8 text-base text-body-color dark:text-body-color-dark">
             {content.description}
           </p>
-          <motion.button
-            onClick={handleToggleProjects}
-            disabled={loading}
-            className="rounded-md bg-primary px-8 py-4 text-base font-semibold text-white transition hover:bg-primary/90 disabled:opacity-50"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {loading ? "Loading..." : (showProjects ? "Hide Projects" : content.buttonText)}
-          </motion.button>
         </div>
 
-        <AnimatePresence>
-          {showProjects && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="mt-12 overflow-hidden"
-            >
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="mt-12 overflow-hidden"
+        >
+          <motion.div
+            className="-mx-4 flex flex-wrap justify-center"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            {projects.map((project, index) => (
               <motion.div
-                className="-mx-4 flex flex-wrap justify-center"
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
+                key={project.id}
+                className="w-full px-4 md:w-1/2 lg:w-1/3"
+                variants={fadeInUp}
+                transition={{ duration: 0.5 }}
               >
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    className="w-full px-4 md:w-1/2 lg:w-1/3"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className="mb-8 overflow-hidden rounded-lg bg-white shadow-one dark:bg-dark">
-                      <div className="relative aspect-video">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <h4 className="mb-3 text-xl font-bold text-black dark:text-white">
-                          {project.title}
-                        </h4>
-                        <p className="mb-4 text-base text-body-color dark:text-body-color-dark">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {project.techStack.map((tech, idx) => (
-                            <span
-                              key={idx}
-                              className="rounded bg-primary/10 px-2 py-1 text-xs text-primary"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        {/* Live Demo Button */}
-                        <div className="mt-4 pt-4 border-t border-gray-200">
-                          <a
-                            href={project.demoLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                          >
-                            Live Demo
-                          </a>
-                        </div>
-                      </div>
+                <div className="mb-8 overflow-hidden rounded-lg bg-white shadow-one dark:bg-dark">
+                  <div className="relative aspect-video">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h4 className="mb-3 text-xl font-bold text-black dark:text-white">
+                      {project.title}
+                    </h4>
+                    <p className="mb-4 text-base text-body-color dark:text-body-color-dark">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="rounded bg-primary/10 px-2 py-1 text-xs text-primary"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                  </motion.div>
-                ))}
+                    {/* Live Demo Button */}
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                      >
+                        Explore Our Project
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            ))}
+          </motion.div>
+        </motion.div>
       </motion.div>
     </>
   );

@@ -1,0 +1,36 @@
+# Hostinger Email Setup Instructions
+
+## Step 1: Set up Email Account
+1. Login to your Hostinger control panel
+2. Go to "Emails" section
+3. Create a new email account: info@yourdomain.com
+4. Set a strong password
+
+## Step 2: Configure contact.php
+Edit the contact.php file and update these lines:
+- Line 23: `$to = 'info@yourdomain.com';` (your email)
+- Line 26: `$from_email = 'noreply@yourdomain.com';` (create this email too)
+
+## Step 3: Test the Contact Form
+1. Upload the files to public_html
+2. Visit your website
+3. Submit the contact form
+4. Check your email inbox
+
+## Alternative: Use External Email Service
+If Hostinger email doesn't work, you can use:
+- Gmail SMTP
+- SendGrid
+- Mailgun
+- Or any other email service
+
+## Troubleshooting
+- Check spam folder
+- Verify email account is active
+- Check hosting PHP mail logs
+- Test with a simple PHP mail script
+
+## Important Notes
+- Emails might go to spam initially
+- Some hosting providers block PHP mail()
+- Consider using SMTP for better deliverability

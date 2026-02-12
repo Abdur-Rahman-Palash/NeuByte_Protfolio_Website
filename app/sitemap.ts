@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/markdown'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://neubyte.co'
+  const baseUrl = 'https://neubyte.tech'
   const posts = getAllPosts();
 
   const blogPosts = posts.map((blog) => ({

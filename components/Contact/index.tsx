@@ -22,7 +22,8 @@ const Contact = () => {
     setSubmitMessage("");
 
     try {
-      const response = await fetch('/api/contact', {
+      // Use Express server API endpoint (port 3001)
+      const response = await fetch('http://localhost:3001/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ const Contact = () => {
         setSubmitMessage(data.error || "Failed to send message");
       }
     } catch (error) {
-      setSubmitMessage("Network error. Please try again.");
+      setSubmitMessage("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
     }

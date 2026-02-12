@@ -80,7 +80,7 @@ const Footer = () => {
                     </svg>
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/company/neubyte/posts/?feedView=all"
                     aria-label="LinkedIn"
                     className="dark:text-body-color-dark text-body-color duration-300 hover:text-primary dark:hover:text-primary"
                     whileHover={{ scale: 1.2 }}

@@ -1,0 +1,90 @@
+# NeuByte Website - Next.js Static Hosting .htaccess
+# Handles routing for Next.js static export
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+# Handle Next.js static files and routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route all non-file requests to index.html (Next.js static export)
+RewriteRule ^(.*)$ index.html [L,QSA]
+
+# Handle specific Next.js routes
+RewriteRule ^home$ / [L,R=301]
+RewriteRule ^about$ /about [L]
+RewriteRule ^solutions$ /solutions [L]
+RewriteRule ^contact$ /contact [L]
+RewriteRule ^blog$ /blog [L]
+RewriteRule ^projects$ /projects [L]
+
+# Handle API routes (if needed for static hosting)
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/(.*)$ api/$1 [L]
+
+# Security - Block access to sensitive files
+<Files ~ "^\.">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<FilesMatch "^(env|\.env|\.env\.local|package\.json|package-lock\.json|next\.config\.js|server\.js)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Error pages
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# Force HTTPS (uncomment if you have SSL certificate)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove trailing slashes (optional)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# Handle Next.js _next static assets
+RewriteRule ^_next/(.*)$ _next/$1 [L]
+
+# Handle Next.js static files
+RewriteRule ^_next/static/(.*)$ _next/static/$1 [L]

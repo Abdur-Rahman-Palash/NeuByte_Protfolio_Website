@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Hostinger hosting optimizations (server-side rendering)
+  // Static export configuration
+  output: process.env.STATIC_BUILD === 'true' ? 'export' : undefined,
+  distDir: process.env.STATIC_BUILD === 'true' ? 'out' : '.next',
+  
+  // Vercel deployment with API routes
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   
-  // Image optimization for Hostinger
+  // Image optimization for Vercel
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -35,29 +39,6 @@ const nextConfig = {
       };
     }
     return config;
-  },
-  
-  // Security headers for production
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
-    ];
   },
 };
 

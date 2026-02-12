@@ -273,6 +273,57 @@ export default function AdminPage() {
           <p style={{ margin: '5px 0 0 0', opacity: 0.9 }}>Content Management System</p>
         </div>
         <div>
+          <a
+            href="/admin/projects"
+            style={{
+              background: 'white',
+              color: '#667eea',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              marginRight: '10px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
+            🚀 Projects
+          </a>
+          <a
+            href="/admin/blog"
+            style={{
+              background: 'white',
+              color: '#667eea',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              marginRight: '10px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
+            📝 Blog
+          </a>
+          <a
+            href="/admin/solutions"
+            style={{
+              background: 'white',
+              color: '#667eea',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              marginRight: '10px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
+            🔧 Solutions
+          </a>
           <button
             onClick={() => setShowForm(!showForm)}
             style={{

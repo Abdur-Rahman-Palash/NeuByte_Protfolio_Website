@@ -94,9 +94,7 @@ const CEO = () => {
                     <li>
                     Performed automation of complex workflows and boosting production efficiency.
                     </li>
-                    <li>
-                     Performed automation of complex workflows and boosting production efficiency.
-                    </li>
+                   
                     <li>
                      Now applying above priceless skills to Neubyte’s intelligent AI agents for real-world impact.
                     </li>

@@ -70,6 +70,7 @@ const Header = () => {
                     alt="NeuByte Logo"
                     width={90}
                     height={30}
+                    priority
                   />
                 </div>
               </Link>
